@@ -111,7 +111,7 @@ p{text-wrap:pretty}
 .dropdown__headline{font-family:var(--serif); font-size:20px; line-height:1.3}
 .dropdown__detail{font-size:10.5px; color:var(--dim); letter-spacing:0.05em; margin-top:3px}
 .vitals{display:flex; flex-direction:column; gap:9px; font-size:11.5px; font-variant-numeric:tabular-nums}
-.vitals__row{display:grid; grid-template-columns:44px minmax(0,1fr) 64px; align-items:center; gap:10px}
+.vitals__row{display:grid; grid-template-columns:72px minmax(0,1fr) 64px; align-items:center; gap:10px}
 .vitals__key{color:var(--dim); letter-spacing:0.08em}
 .vitals__meter{height:5px; background:var(--rail); position:relative; overflow:hidden}
 .vitals__fill{position:absolute; left:0; top:0; bottom:0}
@@ -326,7 +326,7 @@ p{text-wrap:pretty}
   <div class="brand">
     <span class="brand__dot" aria-hidden="true"></span>
     <span class="brand__name">Sentry</span>
-    <span class="brand__meta">v1.0 · macOS · arm64</span>
+    <span class="brand__meta">v1.0 · macOS 14+ · universal</span>
   </div>
   <nav class="site-nav" aria-label="Primary">
     <a href="#monitoring">monitoring</a>
@@ -369,7 +369,7 @@ p{text-wrap:pretty}
             <div class="dropdown__verdict">
               <span class="dropdown__dot" id="sim-dot" style="background:var(--accent)"></span>
               <div>
-                <div class="dropdown__headline" id="sim-verdict">Everything looks fine.</div>
+                <div class="dropdown__headline" id="sim-verdict">Everything looks normal</div>
                 <div class="dropdown__detail" id="sim-detail">uptime 6d 04h · no anomalies in 24h</div>
               </div>
             </div>
@@ -396,20 +396,20 @@ p{text-wrap:pretty}
     <div class="marquee">
       <div class="marquee__track">
         <div class="marquee__set">
-          <span><span>◆</span> everything local · zero network by default</span>
+          <span><span>◆</span> your data never leaves the mac</span>
           <span><span>◆</span> 100% native swift + swiftui, no electron</span>
-          <span><span>◆</span> apple silicon</span>
+          <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
-          <span><span>◆</span> full voiceover</span>
-          <span><span>◆</span> macstat cli + stdio mcp binary</span>
+          <span><span>◆</span> extensive voiceover labelling</span>
+          <span><span>◆</span> sentryctl cli + SentryMCP stdio binary</span>
         </div>
         <div class="marquee__set" aria-hidden="true">
-          <span><span>◆</span> everything local · zero network by default</span>
+          <span><span>◆</span> your data never leaves the mac</span>
           <span><span>◆</span> 100% native swift + swiftui, no electron</span>
-          <span><span>◆</span> apple silicon</span>
+          <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
-          <span><span>◆</span> full voiceover</span>
-          <span><span>◆</span> macstat cli + stdio mcp binary</span>
+          <span><span>◆</span> extensive voiceover labelling</span>
+          <span><span>◆</span> sentryctl cli + SentryMCP stdio binary</span>
         </div>
       </div>
     </div>
@@ -420,7 +420,7 @@ p{text-wrap:pretty}
       <div>
         <p class="eyebrow">[01] core monitoring</p>
         <h2 class="h2">A menu bar you compose yourself.</h2>
-        <p class="lede" style="max-width:52ch; margin-bottom:16px">CPU, GPU, memory, disk, network, thermals, battery: shown as values, icons, sparklines, bars or arcs. Drag to reorder. Per-module thresholds. Visibility rules, like <span class="hi">only show battery when discharging</span>.</p>
+        <p class="lede" style="max-width:52ch; margin-bottom:16px">Nine modules — battery, CPU, GPU, Neural Engine, memory, disk, network, thermals, system — shown as values, icons, sparklines, bars or arcs. Drag to reorder. Per-module thresholds. Visibility rules, like <span class="hi">only show battery when discharging</span>.</p>
         <p class="lede" style="max-width:52ch">Rendered strictly monochrome, so it stays legible on any wallpaper, with a single <span class="hi">!</span> when something crosses critical.</p>
       </div>
       <div class="cells cells--2" id="sim-modules"></div>
@@ -439,7 +439,7 @@ p{text-wrap:pretty}
       </div>
       <div>
         <h3 class="h3">History that keeps</h3>
-        <p>Per-metric charts from the last hour out to all-time, backed by a local SQLite time-series store with automatic rollups.</p>
+        <p>Per-metric charts from the last 24 hours out to six months, backed by a local SQLite time-series store with automatic rollups.</p>
       </div>
     </div>
   </section>
@@ -452,7 +452,7 @@ p{text-wrap:pretty}
         <div class="chart__head">
           <div class="chart__title">
             <span class="chart__label">cpu history</span>
-            <span class="chart__caption" id="sim-range-caption">last 60 minutes</span>
+            <span class="chart__caption" id="sim-range-caption">last 24 hours</span>
           </div>
           <div class="ranges" id="sim-ranges" role="group" aria-label="History time range"></div>
         </div>
@@ -461,7 +461,7 @@ p{text-wrap:pretty}
           <div class="plot__line" style="top:26%"></div>
         </div>
         <div class="plot__axis">
-          <span id="sim-range-start">60 min ago</span>
+          <span id="sim-range-start">24 h ago</span>
           <span>peak <span id="sim-range-peak">…</span></span>
           <span>now</span>
         </div>
@@ -474,13 +474,15 @@ p{text-wrap:pretty}
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <h2 class="h2 h2--flush">Stay awake exactly as long as the job takes.</h2>
       <div>
-        <p class="lede" style="margin-bottom:20px">Keep-awake for a duration, indefinitely, until battery drops below a threshold, while the CPU stays busy, or while a named process is running.</p>
-        <div class="term term--roomy">
-          <div><span class="term__prompt">$</span> macstat awake --while-running claude</div>
-          <div class="term__muted">→ holding wake lock · pid 48213 · started 14:02</div>
-          <div class="term__muted">→ released automatically when the process exits</div>
+        <p class="lede" style="margin-bottom:20px">Thirteen ways to hold the wake lock, not one. Pick a duration, hold it indefinitely, run it until a set time, or tie it to a condition and let it release itself.</p>
+        <div class="tags" style="margin-bottom:20px">
+          <span class="tag">Indefinitely</span><span class="tag">15m</span><span class="tag">30m</span>
+          <span class="tag">1h</span><span class="tag">2h</span><span class="tag">4h</span><span class="tag">8h</span>
+          <span class="tag">Until a time</span><span class="tag">Until battery is low</span>
+          <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
+          <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:18px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7">Point it at claude, codex, xcodebuild or node. Amphetamine, evolved for long-running agent work.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Amphetamine, evolved for long-running agent work.</p>
       </div>
     </div>
   </section>
@@ -491,18 +493,19 @@ p{text-wrap:pretty}
       <div class="split split--105-1" style="align-items:start; margin-top:16px">
         <div>
           <h2 class="h2 h2--lg">Your agents can ask <em style="font-style:italic">“is now a good time?”</em></h2>
-          <p class="lede" style="max-width:54ch">A built-in MCP server exposes about twenty tools to Claude Code, Claude Desktop, Cursor, or any MCP client. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that returns a regression-based cool-down ETA, so agents schedule instead of poll.</p>
+          <p class="lede" style="max-width:54ch">A built-in MCP server exposes twenty tools, with one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code, Zed and Windsurf — or a config snippet for any other MCP client. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
           <div class="tags" style="margin-top:24px" id="sim-tools"></div>
-          <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions, confirmation dialogs, rate limiting and a live activity log. Optional LAN remote access with API-key auth, off unless you turn it on.</p>
+          <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions with writes off by default, a native confirmation dialog on every write, per-client rate limits and a live activity log. Behind that sits a guardrails layer: kill switch, per-client revocation, a battery floor, an on-battery write ban, quiet hours and thermal auto-revoke. Remote access is opt-in HTTP with bearer-key auth — it binds every interface, so put it behind your firewall.</p>
         </div>
         <div class="stack">
           <div class="term">
             <div class="term__label">agent transcript</div>
             <div class="term__in">→ preflight_check()</div>
-            <div class="term__out">&nbsp;&nbsp;&nbsp;ready: false · thermal: throttling</div>
-            <div class="term__out">&nbsp;&nbsp;&nbsp;nominal in ~4 min · confidence: high</div>
-            <div class="term__in" style="margin-top:8px">→ wait_until_ready(max=600)</div>
-            <div class="term__out">&nbsp;&nbsp;&nbsp;ready after 3m52s · starting build</div>
+            <div class="term__out">&nbsp;&nbsp;&nbsp;verdict: "wait"</div>
+            <div class="term__out">&nbsp;&nbsp;&nbsp;reasons: [thermal_elevated]</div>
+            <div class="term__out">&nbsp;&nbsp;&nbsp;suggestedWaitSeconds: 232</div>
+            <div class="term__in" style="margin-top:8px">→ wait_until_ready(condition: "thermal_normal")</div>
+            <div class="term__out">&nbsp;&nbsp;&nbsp;satisfied after 3m52s · starting build</div>
           </div>
           <div class="panel">
             <div class="panel__label">live agent activity</div>
@@ -552,8 +555,8 @@ p{text-wrap:pretty}
     <div class="split split--8-12 split--topline">
       <div>
         <p class="eyebrow">[05] alerts</p>
-        <h2 class="h2 h2--sm">Eleven rules, all editable.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, quiet hours, cooldowns and rate caps. Severity is never carried by colour alone.</p>
+        <h2 class="h2 h2--sm">Fourteen rules, all editable.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own. Severity is never carried by colour alone.</p>
       </div>
       <div class="tags" id="sim-alerts"></div>
     </div>
@@ -563,8 +566,8 @@ p{text-wrap:pretty}
     <div class="split split--8-12 split--topline">
       <div>
         <p class="eyebrow">[06] design</p>
-        <h2 class="h2 h2--sm">Thirteen themes, switchable from the dropdown.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across dropdown, dashboard and widgets. Translucent and Liquid Glass use real behind-window blur. Monospaced digits everywhere, so numbers never jitter.</p>
+        <h2 class="h2 h2--sm">Six themes, switchable from the dropdown.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System and Translucent use real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
       </div>
       <div class="themes" id="sim-themes"></div>
     </div>
@@ -575,12 +578,12 @@ p{text-wrap:pretty}
       <div class="card">
         <div class="shot shot--card"><span class="shot__label">macos desktop widgets</span></div>
         <h3>Widgets on the desktop</h3>
-        <p>Fed live by the app, themed alongside it.</p>
+        <p>Small, medium and large, fed live by the app, plus a Control Centre toggle for keep-awake.</p>
       </div>
       <div class="card">
         <div class="shot shot--card"><span class="shot__label">iphone companion · home &amp; lock screen</span></div>
         <h3>Your Mac, from your pocket</h3>
-        <p>Battery, CPU and sleep status over local-network sync.</p>
+        <p>A full iPhone app — dashboard, history, alerts — over Bonjour on your network, or paired remotely with TLS.</p>
       </div>
     </div>
   </section>
@@ -603,11 +606,11 @@ p{text-wrap:pretty}
   <section class="section section--tight" data-reveal>
     <div class="cells cells--3">
       <div class="cell"><div class="cell__key">Language</div><div class="cell__spec">Swift + SwiftUI + AppKit</div></div>
-      <div class="cell"><div class="cell__key">Architecture</div><div class="cell__spec">Apple Silicon, no Electron</div></div>
+      <div class="cell"><div class="cell__key">Architecture</div><div class="cell__spec">Universal · macOS 14+, no Electron</div></div>
       <div class="cell"><div class="cell__key">Storage</div><div class="cell__spec">Local GRDB / SQLite</div></div>
-      <div class="cell"><div class="cell__key">Network</div><div class="cell__spec">None unless enabled</div></div>
-      <div class="cell"><div class="cell__key">Also ships</div><div class="cell__spec">macstat CLI · stdio MCP binary</div></div>
-      <div class="cell"><div class="cell__key">Accessibility</div><div class="cell__spec">Full VoiceOver</div></div>
+      <div class="cell"><div class="cell__key">Network</div><div class="cell__spec">No accounts, no telemetry</div></div>
+      <div class="cell"><div class="cell__key">Also ships</div><div class="cell__spec">sentryctl CLI · SentryMCP stdio binary</div></div>
+      <div class="cell"><div class="cell__key">Accessibility</div><div class="cell__spec">Extensive VoiceOver labelling</div></div>
     </div>
   </section>
 
@@ -656,33 +659,33 @@ p{text-wrap:pretty}
 
   var state = {
     k: 0, cpu: 28, gpu: 12, mem: 61, temp: 58, net: 2.4, batt: 82,
-    hist: [], range: "1h", series: null
+    hist: [], range: "24h", series: null
   };
 
   for (var i = 0; i < 22; i++) state.hist.push(18 + Math.random() * 26);
 
   // ---- static content ----------------------------------------------------
-  var TOOLS = ["get_snapshot", "preflight_check", "wait_until_ready", "battery_health_history",
-    "thermal_state", "top_processes", "keep_awake", "release_wake_lock", "create_alert_rule",
-    "energy_report", "…and ~10 more"];
+  var TOOLS = ["get_system_snapshot", "get_battery_status", "get_battery_health_history",
+    "get_metric_history", "get_thermal_status", "get_resource_usage", "get_alert_history",
+    "get_device_info", "get_sleep_state", "preflight_check", "get_resource_events_since",
+    "get_agent_capacity", "get_agent_activity", "get_session_resource_report", "keep_awake",
+    "release_awake", "set_refresh_interval", "set_alert_rule_enabled", "create_alert_rule",
+    "wait_until_ready"];
 
-  var ALERTS = ["temperature high", "cpu throttling", "gpu throttling", "low battery",
-    "critical battery", "health drop", "memory pressure", "swap growth", "disk nearly full",
-    "network stall", "wake lock stuck"];
+  var ALERTS = ["Low battery", "Critical battery", "Fully charged", "Charge limit reminder",
+    "Battery health drop", "High temperature", "Thermal throttling", "Sustained high CPU",
+    "Low disk", "Disk almost full", "Critical memory pressure", "Heavy swap usage",
+    "Charging paused", "Slow charging"];
 
   var THEMES = [
-    ["Notion", "#FFFFFF", "#37352F"], ["System", "#F5F5F7", "#1D1D1F"],
-    ["Translucent", "#E8E6E3", "#4A4744"], ["Liquid Glass", "#DCE4EA", "#3B4650"],
-    ["GitHub", "#0D1117", "#58A6FF"], ["Xcode", "#1F1F24", "#FF7AB2"],
-    ["Nord", "#2E3440", "#88C0D0"], ["Dracula", "#282A36", "#BD93F9"],
-    ["Solarized Dark", "#002B36", "#B58900"], ["Tokyo Night", "#1A1B26", "#7AA2F7"],
-    ["Monokai", "#272822", "#A6E22E"], ["Slate", "#1E293B", "#94A3B8"],
-    ["Paper", "#FAF8F4", "#12110F"]
+    ["System", "#F5F5F7", "#1D1D1F"], ["Ivory", "#FAF8F4", "#12110F"],
+    ["Translucent", "#E8E6E3", "#4A4744"], ["One Dark", "#282C34", "#61AFEF"],
+    ["Slate", "#1E293B", "#94A3B8"], ["Tokyo Night", "#1A1B26", "#7AA2F7"]
   ];
 
-  var RANGES = ["1h", "24h", "7d", "30d", "all"];
-  var CAPTIONS = { "1h": "last 60 minutes", "24h": "last 24 hours", "7d": "last 7 days", "30d": "last 30 days", "all": "all time" };
-  var STARTS = { "1h": "60 min ago", "24h": "24 h ago", "7d": "7 d ago", "30d": "30 d ago", "all": "first launch" };
+  var RANGES = ["24h", "7d", "30d", "90d", "6mo"];
+  var CAPTIONS = { "24h": "last 24 hours", "7d": "last 7 days", "30d": "last 30 days", "90d": "last 90 days", "6mo": "last six months" };
+  var STARTS = { "24h": "24 h ago", "7d": "7 d ago", "30d": "30 d ago", "90d": "90 d ago", "6mo": "6 mo ago" };
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -706,7 +709,7 @@ p{text-wrap:pretty}
   });
 
   // ---- vitals / modules scaffolding --------------------------------------
-  var VITAL_KEYS = ["CPU", "GPU", "MEM", "DISK", "TEMP", "BATT"];
+  var VITAL_KEYS = ["CPU", "GPU", "Memory", "Disk", "Thermals", "Battery"];
   var vitalNodes = VITAL_KEYS.map(function (key) {
     var row = el("div", "vitals__row");
     var meter = el("span", "vitals__meter");
@@ -721,10 +724,11 @@ p{text-wrap:pretty}
   });
 
   var MODULE_KEYS = [
-    ["CPU", "Per-core, sparkline or arc"], ["GPU", "Utilisation and VRAM"],
+    ["Battery", "Charge, watts, time remaining"], ["CPU", "Value, sparkline, bar or arc"],
+    ["GPU", "Utilisation and VRAM"], ["Neural Engine", "ANE power draw"],
     ["Memory", "Pressure, swap, compressed"], ["Disk", "Free space and I/O rate"],
-    ["Network", "Up, down, per-interface"], ["Thermals", "Fans and throttle state"],
-    ["Battery", "Only visible when discharging"], ["Sleep", "Wake lock and its owner"]
+    ["Network", "Up, down, active interface"], ["Thermals", "Fans and throttle state"],
+    ["System", "Uptime and wake locks"]
   ];
   var moduleNodes = MODULE_KEYS.map(function (m) {
     var cell = el("div", "cell cell--module");
@@ -776,11 +780,11 @@ p{text-wrap:pretty}
     return out;
   }
   state.series = {
-    "1h": gen(52, 14, 26, [[30, 38]]),
-    "24h": gen(52, 10, 22, [[8, 14], [33, 44]]),
-    "7d": gen(52, 16, 30, [[4, 9], [21, 26], [40, 48]]),
-    "30d": gen(52, 20, 34, [[12, 18], [36, 41]]),
-    "all": gen(52, 24, 40, [[6, 11], [26, 31], [45, 50]])
+    "24h": gen(52, 14, 26, [[30, 38]]),
+    "7d": gen(52, 10, 22, [[8, 14], [33, 44]]),
+    "30d": gen(52, 16, 30, [[4, 9], [21, 26], [40, 48]]),
+    "90d": gen(52, 20, 34, [[12, 18], [36, 41]]),
+    "6mo": gen(52, 24, 40, [[6, 11], [26, 31], [45, 50]])
   };
 
   var rangeButtons = RANGES.map(function (key) {
@@ -830,11 +834,11 @@ p{text-wrap:pretty}
     s.batt = Math.max(41, s.batt - 0.06);
     s.hist.push(s.cpu);
     if (s.hist.length > 22) s.hist.shift();
-    s.series["1h"].push(s.cpu);
-    if (s.series["1h"].length > 52) s.series["1h"].shift();
+    s.series["24h"].push(s.cpu);
+    if (s.series["24h"].length > 52) s.series["24h"].shift();
 
     render();
-    if (s.range === "1h") renderHistory();
+    if (s.range === "24h") renderHistory();
   }
 
   function render() {
@@ -851,8 +855,8 @@ p{text-wrap:pretty}
     $("sim-batt").textContent = r(s.batt) + "%";
     $("sim-bang").hidden = !throttling;
 
-    $("sim-verdict").textContent = throttling ? "Thermals are throttling."
-      : busy ? "Under heavy load, still fine." : "Everything looks fine.";
+    $("sim-verdict").textContent = throttling ? "Thermals needs attention"
+      : busy ? "CPU is very busy" : "Everything looks normal";
     $("sim-detail").textContent = throttling
       ? "cpu " + r(s.cpu) + "% · " + r(s.temp) + "°c · nominal in ~4 min"
       : busy ? "sustained agent build · " + r(s.temp) + "°c"
@@ -873,8 +877,8 @@ p{text-wrap:pretty}
       vitalNodes[idx].fill.style.background = v[2];
     });
 
-    var moduleVals = [pct(s.cpu), pct(s.gpu), memGB + " GB", "412 GB",
-      s.net.toFixed(1) + " MB/s", r(s.temp) + " °C", r(s.batt) + "%", "Held"];
+    var moduleVals = [r(s.batt) + "%", pct(s.cpu), pct(s.gpu), "0.1 W", memGB + " GB",
+      "412 GB", s.net.toFixed(1) + " MB/s", r(s.temp) + " °C", "6d 04h"];
     moduleVals.forEach(function (v, idx) { moduleNodes[idx].textContent = v; });
 
     var max = Math.max.apply(null, [40].concat(s.hist));
