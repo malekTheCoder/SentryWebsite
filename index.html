@@ -24,18 +24,55 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0D0F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23F0A961'/%3E%3C/svg%3E">
 
+<script>(function(){try{var m=localStorage.getItem('sentry-theme');if(m==='light'||m==='dark')document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+/* One palette per theme. Every colour below is referenced through a variable,
+   including the ones the simulation writes inline from JS, so a theme flip
+   needs no JS beyond setting the attribute. */
 :root{
+  color-scheme:dark;
   --bg:#0B0D0F; --panel:#0E1114; --panel-2:#14181B; --ink:#000000;
   --line:#1E2328; --line-2:#2A3036; --rail:#232A2F;
   --fg:#E6EAED; --fg-2:#C7CDD2; --body:#9AA2A8; --dim:#8A939B; --dim-2:#7C848A;
   --accent:oklch(0.80 0.15 70); --bad:oklch(0.64 0.19 27); --nominal:#8A9299;
+  --grid:#12161A; --hatch:#151A1E; --bar:#2E363C; --rule-1:#39424A; --rule-2:#4A555D;
+  --header-bg:rgba(11,13,15,0.82); --shadow:rgba(0,0,0,0.9);
   --serif:Newsreader,Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --pad:32px; --max:1300px;
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#FAF8F4; --panel:#FFFFFF; --panel-2:#F2EFE9; --ink:#12110F;
+  --line:#E2DED6; --line-2:#C9C4BA; --rail:#E2DED6;
+  --fg:#12110F; --fg-2:#3A3833; --body:#55514A; --dim:#6B6862; --dim-2:#6B6862;
+  --accent:oklch(0.56 0.17 45); --bad:oklch(0.56 0.17 30); --nominal:#8A867E;
+  --grid:#F0ECE3; --hatch:#E7E3DB; --bar:#C9C4BA; --rule-1:#C9C4BA; --rule-2:#8A867E;
+  --header-bg:rgba(250,248,244,0.86); --shadow:rgba(18,17,15,0.28);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --bg:#FAF8F4; --panel:#FFFFFF; --panel-2:#F2EFE9; --ink:#12110F;
+    --line:#E2DED6; --line-2:#C9C4BA; --rail:#E2DED6;
+    --fg:#12110F; --fg-2:#3A3833; --body:#55514A; --dim:#6B6862; --dim-2:#6B6862;
+    --accent:oklch(0.56 0.17 45); --bad:oklch(0.56 0.17 30); --nominal:#8A867E;
+    --grid:#F0ECE3; --hatch:#E7E3DB; --bar:#C9C4BA; --rule-1:#C9C4BA; --rule-2:#8A867E;
+    --header-bg:rgba(250,248,244,0.86); --shadow:rgba(18,17,15,0.28);
+  }
+}
+/* The menu bar pill and the terminal blocks stay dark in both themes: they
+   are renderings of a black menu bar and a terminal, and inverting them
+   would misrepresent what the app looks like. */
+.term,.menubar{
+  --line:#1E2328; --line-2:#2A3036;
+  --fg:#E6EAED; --fg-2:#C7CDD2; --body:#9AA2A8; --dim:#8A939B; --dim-2:#7C848A;
+  --accent:oklch(0.80 0.15 70); --bad:oklch(0.64 0.19 27);
+  color:var(--fg);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -64,7 +101,7 @@ p{text-wrap:pretty}
 /* header */
 .site-header{
   position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
-  gap:24px; padding:13px var(--pad); background:rgba(11,13,15,0.82);
+  gap:24px; padding:13px var(--pad); background:var(--header-bg);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line);
 }
 .brand{display:flex; align-items:center; gap:12px; min-width:0}
@@ -72,6 +109,12 @@ p{text-wrap:pretty}
 .brand__name{font-size:13px; font-weight:600; letter-spacing:0.26em; text-transform:uppercase}
 .brand__meta{font-size:11px; color:var(--dim); letter-spacing:0.06em; white-space:nowrap}
 .site-nav{display:flex; align-items:center; gap:24px; font-size:12px; letter-spacing:0.04em}
+.theme-btn{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.08em; padding:7px 11px;
+  background:transparent; color:var(--dim); border:1px solid var(--line-2);
+  cursor:pointer; transition:color .2s,border-color .2s; white-space:nowrap;
+}
+.theme-btn:hover{color:var(--accent); border-color:var(--accent)}
 .btn-ghost{padding:7px 14px; border:1px solid var(--accent); color:var(--accent); white-space:nowrap; transition:background .2s,color .2s}
 .btn-ghost:hover{background:var(--accent); color:var(--bg)}
 .btn-solid{
@@ -83,7 +126,7 @@ p{text-wrap:pretty}
 /* hero */
 .hero{
   position:relative; padding:84px var(--pad) 0; max-width:var(--max); margin:0 auto;
-  background-image:linear-gradient(#12161A 1px,transparent 1px),linear-gradient(90deg,#12161A 1px,transparent 1px);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:64px 64px; background-position:center top;
 }
 .hero__kicker{display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--dim)}
@@ -107,8 +150,9 @@ p{text-wrap:pretty}
 .menubar__bang{font-weight:600; animation:pulse 1.1s ease-in-out infinite}
 .menubar__spark{display:flex; align-items:flex-end; gap:1px; height:13px}
 .menubar__spark span{width:2px; background:#FFFFFF}
+.menubar{color:#FFFFFF}
 
-.showcase{border:1px solid var(--line); background:var(--panel); padding:20px; box-shadow:0 40px 80px -40px rgba(0,0,0,0.9)}
+.showcase{border:1px solid var(--line); background:var(--panel); padding:20px; box-shadow:0 40px 80px -40px var(--shadow)}
 .showcase__grid{display:grid; grid-template-columns:340px minmax(0,1fr); gap:20px; align-items:stretch}
 .dropdown{border:1px solid var(--line); background:var(--panel-2); padding:16px; display:flex; flex-direction:column; gap:14px}
 .dropdown__verdict{display:flex; align-items:flex-start; gap:9px}
@@ -127,7 +171,7 @@ p{text-wrap:pretty}
 .chip--on{border-color:var(--accent); background:var(--accent); color:var(--bg)}
 .shot{
   border:1px solid var(--line); background-color:var(--bg);
-  background-image:repeating-linear-gradient(135deg,#151A1E 0 1px,transparent 1px 9px);
+  background-image:repeating-linear-gradient(135deg,var(--hatch) 0 1px,transparent 1px 9px);
   display:flex; align-items:center; justify-content:center; padding:24px;
 }
 .shot--hero{min-height:420px}
@@ -212,14 +256,14 @@ p{text-wrap:pretty}
 .plot{position:relative; height:130px; margin-top:14px; border-bottom:1px solid var(--line)}
 .plot__bars{position:absolute; inset:0; display:flex; align-items:flex-end; gap:2px; z-index:1}
 .plot__bars span{flex:1}
-.plot__line{position:absolute; left:0; right:0; height:1px; background:#39424A; z-index:2}
+.plot__line{position:absolute; left:0; right:0; height:1px; background:var(--rule-1); z-index:2}
 .plot__axis{display:flex; justify-content:space-between; margin-top:7px; font-size:10px; color:var(--dim); gap:10px}
 
 /* battery */
 .health{position:relative; height:230px; margin-top:16px; border-bottom:1px solid var(--line); border-left:1px solid var(--line)}
 .health__bars{position:absolute; inset:0; display:flex; align-items:flex-end; gap:2px; padding:0 2px; z-index:1}
 .health__bars span{flex:1}
-.health__thresh{position:absolute; left:0; right:0; top:78%; height:1px; background:#4A555D; z-index:2}
+.health__thresh{position:absolute; left:0; right:0; top:78%; height:1px; background:var(--rule-2); z-index:2}
 .health__tag{position:absolute; left:6px; top:78%; transform:translateY(-135%); font-size:10px; color:var(--body); background:var(--panel); padding:1px 5px; z-index:3}
 .legend{display:flex; gap:14px; font-size:10.5px; color:var(--dim); flex-wrap:wrap}
 .legend span{display:flex; align-items:center; gap:6px}
@@ -313,6 +357,9 @@ p{text-wrap:pretty}
   :root{--pad:20px}
   .hero{padding-top:56px; background-size:44px 44px}
   .site-nav a:not(.btn-ghost){display:none}
+  /* the toggle stays — following the system theme matters most on a phone */
+  .site-nav{gap:12px}
+  .theme-btn{padding:7px 8px; letter-spacing:0.04em}
   .brand__meta{display:none}
   .hero__grid{grid-template-columns:1fr; gap:28px; align-items:start}
   .hero__cta{align-items:stretch}
@@ -355,6 +402,7 @@ p{text-wrap:pretty}
     <a href="#agents">agents</a>
     <a href="#battery">battery</a>
     <a href="#themes">themes</a>
+    <button class="theme-btn" id="theme-toggle" type="button" aria-label="Colour theme: follow system">[ theme: auto ]</button>
     <a class="btn-ghost" href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg">download</a>
   </nav>
 </header>
@@ -706,8 +754,10 @@ p{text-wrap:pretty}
 (function () {
   "use strict";
 
-  var ACCENT = "oklch(0.80 0.15 70)", BAD = "oklch(0.64 0.19 27)",
-      NOMINAL = "#8A9299", MUTE = "#8A939B", IDLE_BAR = "#2E363C";
+  // Resolved through CSS variables rather than literals, so the bars and
+  // meters this script styles inline re-colour with the theme for free.
+  var ACCENT = "var(--accent)", BAD = "var(--bad)",
+      NOMINAL = "var(--nominal)", MUTE = "var(--dim)", IDLE_BAR = "var(--bar)";
 
   var $ = function (id) { return document.getElementById(id); };
   var r = Math.round;
@@ -994,6 +1044,30 @@ p{text-wrap:pretty}
     note.textContent = "release notes aren't open yet — watch the repo on GitHub in the meantime.";
     form.addEventListener("submit", function (e) { e.preventDefault(); });
   }
+
+  // ---- colour theme ------------------------------------------------------
+  // Three states rather than two, so "follow the system" stays reachable
+  // once someone has picked. The key matches the pre-paint script in <head>.
+  var THEME_KEY = "sentry-theme", THEME_ORDER = ["auto", "light", "dark"];
+  var themeBtn = $("theme-toggle");
+
+  function readTheme() {
+    try { return localStorage.getItem(THEME_KEY) || "auto"; } catch (e) { return "auto"; }
+  }
+  function applyTheme(m) {
+    var root = document.documentElement;
+    if (m === "light" || m === "dark") root.setAttribute("data-theme", m);
+    else root.removeAttribute("data-theme");
+    themeBtn.textContent = "[ theme: " + m + " ]";
+    themeBtn.setAttribute("aria-label",
+      m === "auto" ? "Colour theme: follow system" : "Colour theme: " + m);
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = THEME_ORDER[(THEME_ORDER.indexOf(readTheme()) + 1) % THEME_ORDER.length];
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    applyTheme(next);
+  });
+  applyTheme(readTheme());
 
   render();
   renderHistory();
