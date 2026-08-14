@@ -13,7 +13,12 @@
 <meta property="og:url" content="https://malekswilam.dev/SentryWebsite/">
 <meta property="og:title" content="Sentry — the macOS system monitor built for the AI-agent era">
 <meta property="og:description" content="Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
+<meta property="og:image" content="https://malekswilam.dev/SentryWebsite/assets/macos-dashboard.png">
+<meta property="og:image:width" content="2120">
+<meta property="og:image:height" content="1600">
+<meta property="og:image:alt" content="Sentry's dashboard window on macOS, showing CPU, memory and GPU charts alongside battery health and energy use.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://malekswilam.dev/SentryWebsite/assets/macos-dashboard.png">
 <meta name="twitter:title" content="Sentry — the macOS system monitor built for the AI-agent era">
 <meta name="twitter:description" content="Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
 
@@ -273,6 +278,20 @@ p{text-wrap:pretty}
 }
 .site-footer nav{display:flex; gap:20px; flex-wrap:wrap}
 
+/* screenshots */
+.screenshot{display:block; width:100%; border:1px solid var(--line); background:var(--bg)}
+.screenshot--hero{height:100%; min-height:420px; object-fit:cover; object-position:top left}
+.split-shot{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; align-items:center}
+.split-shot .screenshot{max-height:360px; object-fit:contain; object-position:center; background:var(--panel)}
+.cards-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:26px}
+.card .screenshot{height:320px; object-fit:cover; object-position:top center}
+.card .screenshot--watch{object-fit:contain; padding:28px; background:var(--panel-2)}
+
+/* pricing */
+.plan__price{font-family:var(--serif); font-size:38px; line-height:1; margin:0 0 14px !important; color:var(--fg)}
+.plan__was{font-size:20px; color:var(--dim); text-decoration:line-through; margin-left:8px}
+.plan__note{margin-top:14px !important; font-size:12px !important; color:var(--dim) !important; letter-spacing:0.03em}
+
 /* reveal */
 [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 [data-reveal].is-in{opacity:1; transform:none}
@@ -299,6 +318,9 @@ p{text-wrap:pretty}
   .hero__cta{align-items:stretch}
   .btn-solid{text-align:center}
   .cells--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cards-3{grid-template-columns:1fr}
+  .split-shot{grid-template-columns:1fr}
+  .screenshot--hero{min-height:240px}
   /* centring a wider-than-viewport pill clips both ends; start it at the left
      so the first reading is visible and the rest scrolls into view */
   .menubar-rail{justify-content:flex-start}
@@ -333,7 +355,7 @@ p{text-wrap:pretty}
     <a href="#agents">agents</a>
     <a href="#battery">battery</a>
     <a href="#themes">themes</a>
-    <a class="btn-ghost" href="#waitlist">join waitlist</a>
+    <a class="btn-ghost" href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg">download</a>
   </nav>
 </header>
 
@@ -344,8 +366,8 @@ p{text-wrap:pretty}
     <div class="hero__grid">
       <p class="hero__copy">One sentence answers it. Everything underneath is one click deep: thermals, energy, battery forecasting, per-process load. And your coding agents can read all of it over MCP.</p>
       <div class="hero__cta">
-        <a class="btn-solid" href="#waitlist">join the waitlist →</a>
-        <span class="hero__note">free tier at launch · pro upgrade · no account required</span>
+        <a class="btn-solid" href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg">download for mac →</a>
+        <span class="hero__note">v1.0 · macOS 14+ · universal · free · no account required</span>
       </div>
     </div>
 
@@ -385,7 +407,8 @@ p{text-wrap:pretty}
             </div>
           </div>
 
-          <div class="shot shot--hero"><span class="shot__label">dashboard window · screenshot</span></div>
+          <img class="screenshot screenshot--hero" src="assets/macos-dashboard.png" width="2120" height="1600" loading="eager" decoding="async"
+                 alt="Sentry's dashboard window: CPU, memory and GPU sparklines above a combined 24-hour chart, with battery health, cycle count and energy use below.">
         </div>
       </div>
       <p class="caption">live simulation · menu bar and dropdown update in real time</p>
@@ -446,7 +469,14 @@ p{text-wrap:pretty}
 
   <section class="section" style="padding-top:72px" data-reveal>
     <div style="border:1px solid var(--line); background:var(--panel); padding:18px">
-      <div class="shot shot--wide"><span class="shot__label">dashboard · power / activity / history bands</span></div>
+      <div class="split-shot">
+        <img class="screenshot" src="assets/macos-menubar.png" width="800" height="662" loading="lazy" decoding="async"
+             alt="Sentry's menu bar dropdown: the headline reads Everything looks normal, above CPU, memory and battery meters and a Keep Awake toggle.">
+        <div>
+          <h3 class="h3">One glance, then one click</h3>
+          <p style="margin:0; font-size:14px; line-height:1.75; color:var(--body)">The dropdown answers the question in a sentence and shows the modules you enabled. The Dashboard window behind it holds the charts, the battery history and the energy report.</p>
+        </div>
+      </div>
 
       <div class="chart">
         <div class="chart__head">
@@ -482,7 +512,7 @@ p{text-wrap:pretty}
           <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
           <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Amphetamine, evolved for long-running agent work.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations and Indefinitely are free; the conditional modes are Pro. Amphetamine, evolved for long-running agent work.</p>
       </div>
     </div>
   </section>
@@ -562,10 +592,24 @@ p{text-wrap:pretty}
     </div>
   </section>
 
+  <section class="section section--tight" data-reveal>
+    <div class="split split--8-12 split--topline">
+      <div>
+        <p class="eyebrow">[06] fans</p>
+        <h2 class="h2 h2--sm">Fans you can actually set.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Not a readout — a write. A root helper you install explicitly holds the only code in the project that can put a value into the SMC.</p>
+      </div>
+      <div>
+        <p class="lede" style="max-width:56ch; margin-bottom:14px">Every fan control stays disabled until you install the helper from Settings. It verifies its caller twice, expires on a heartbeat, and reverts to firmware control if anything goes quiet.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Apple Silicon only. Fixed-speed mode ships today; the curve editor does not, and the curve is read-only until it does. Fan readout works everywhere.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--tight" id="themes" data-reveal>
     <div class="split split--8-12 split--topline">
       <div>
-        <p class="eyebrow">[06] design</p>
+        <p class="eyebrow">[07] design</p>
         <h2 class="h2 h2--sm">Six themes, switchable from the dropdown.</h2>
         <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System and Translucent use real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
       </div>
@@ -574,31 +618,46 @@ p{text-wrap:pretty}
   </section>
 
   <section class="section section--tight">
-    <div class="split split--1-1" style="gap:20px">
+    <p class="eyebrow">[08] companions</p>
+    <h2 class="h2" style="max-width:20ch">It follows you off the desk.</h2>
+    <div class="cards-3">
       <div class="card">
-        <div class="shot shot--card"><span class="shot__label">macos desktop widgets</span></div>
-        <h3>Widgets on the desktop</h3>
-        <p>Small, medium and large, fed live by the app, plus a Control Centre toggle for keep-awake.</p>
+        <img class="screenshot" src="assets/ios-dashboard.png" width="1206" height="2622" loading="lazy" decoding="async"
+             alt="The Sentry iPhone app showing a Mac's battery at 76 percent charging, a 60-second CPU and memory chart, and a vitals list.">
+        <h3>Your Mac, from your pocket</h3>
+        <p>A full iPhone app — dashboard, history, alerts, settings — fed over Bonjour on your own network, or paired remotely with TLS.</p>
       </div>
       <div class="card">
-        <div class="shot shot--card"><span class="shot__label">iphone companion · home &amp; lock screen</span></div>
-        <h3>Your Mac, from your pocket</h3>
-        <p>A full iPhone app — dashboard, history, alerts — over Bonjour on your network, or paired remotely with TLS.</p>
+        <img class="screenshot" src="assets/ios-alerts.png" width="1206" height="2622" loading="lazy" decoding="async"
+             alt="The alerts tab of the Sentry iPhone app, listing configurable alert rules.">
+        <h3>Alerts that reach you</h3>
+        <p>The same fourteen rules, with the same quiet hours and cooldowns, delivered wherever you are.</p>
+      </div>
+      <div class="card">
+        <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
+             alt="The Sentry Apple Watch app showing a 76 percent battery ring, 46 minutes to full, and CPU, memory and disk dials.">
+        <h3>And your wrist</h3>
+        <p>A three-page watchOS app — overview, keep-awake, agent activity — plus a complication, themed to match the Mac.</p>
       </div>
     </div>
+    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:70ch">Desktop widgets too, in three sizes, fed live by the app, with a Control Centre toggle for keep-awake. The iPhone widgets currently render labelled demo data and say so.</p>
   </section>
 
   <section class="section section--tight">
     <div class="cells cells--2">
       <div class="plan">
         <p class="eyebrow">free</p>
-        <h3>Everything you can see</h3>
-        <p>Menu bar composer, verdict dropdown, dashboard, history, themes, widgets.</p>
+        <h3>The whole monitor</h3>
+        <p class="plan__price">$0</p>
+        <p>Menu bar composer, verdict dropdown, dashboard, history, the six themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps — and the full twenty-tool MCP server.</p>
+        <p class="plan__note">Not a trial. No time limit, no nagging.</p>
       </div>
       <div class="plan plan--pro">
         <p class="eyebrow eyebrow--accent">pro</p>
-        <h3>Agent ops &amp; forecasting</h3>
-        <p>MCP server, remote access, battery forecasting, alert rules, iPhone companion. Price announced at launch.</p>
+        <h3>Sentry Pro</h3>
+        <p class="plan__price">$14.99 <span class="plan__was">$19.99</span></p>
+        <p>Protection Insights · Fan Control · Conditional Keep-Awake · Process-Match Alerts · Custom Themes · Remote Access · History Export &amp; Retention.</p>
+        <p class="plan__note">One purchase, yours forever. 3 Macs · no subscription.</p>
       </div>
     </div>
   </section>
@@ -617,15 +676,13 @@ p{text-wrap:pretty}
   <section class="section section--loose" id="waitlist" data-reveal>
     <div class="waitlist">
       <div>
-        <h2>Get it when it ships.</h2>
-        <p>Early builds go out to the waitlist first. No newsletter, no drip, just one email when it's ready.</p>
+        <h2>Told when it changes.</h2>
+        <p>v1.0 is out. Sign up and you get an email when a release lands — nothing else, and one click to leave.</p>
       </div>
-      <!-- TODO(waitlist): this form has no backend. It reports success without
-           storing the address. Wire it to a real endpoint before relying on it. -->
-      <form class="signup" id="signup" novalidate>
+      <form class="signup" id="signup" method="post" target="_blank" novalidate>
         <div class="signup__field">
-          <label for="email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Email address</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+          <label for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
           <button type="submit" id="signup-btn">notify me</button>
         </div>
         <span class="signup__note" id="signup-note" role="status">no spam. unsubscribe in one click.</span>
@@ -915,12 +972,28 @@ p{text-wrap:pretty}
     setTimeout(function () { nodes.forEach(function (n) { n.classList.add("is-in"); }); }, 2500);
   }
 
-  // ---- waitlist ----------------------------------------------------------
-  $("signup").addEventListener("submit", function (e) {
-    e.preventDefault();
-    $("signup-btn").textContent = "added ✓";
-    $("signup-note").textContent = "you're on the list. one email when it ships.";
-  });
+  // ---- release-notes signup ----------------------------------------------
+  // Paste your Buttondown username between the quotes and the form goes live.
+  // Buttondown's embed takes a plain form POST — no API key, nothing secret
+  // in this page — and answers on its own confirmation page in a new tab.
+  var BUTTONDOWN_USERNAME = "";
+
+  var form = $("signup"), emailInput = $("email"), btn = $("signup-btn"), note = $("signup-note");
+
+  if (BUTTONDOWN_USERNAME) {
+    form.action = "https://buttondown.com/api/emails/embed-subscribe/" + BUTTONDOWN_USERNAME;
+  } else {
+    // Nothing to post to yet. Say so rather than reporting a signup that
+    // isn't happening — the previous version claimed success and dropped
+    // every address on the floor.
+    emailInput.disabled = true;
+    btn.disabled = true;
+    btn.textContent = "opening soon";
+    btn.style.opacity = "0.55";
+    btn.style.cursor = "not-allowed";
+    note.textContent = "release notes aren't open yet — watch the repo on GitHub in the meantime.";
+    form.addEventListener("submit", function (e) { e.preventDefault(); });
+  }
 
   render();
   renderHistory();
