@@ -10,6 +10,7 @@ Live at **<https://malekswilam.dev/SentryWebsite/>**.
 
 ```
 index.html    the entire page — inline CSS, inline JS, no build step
+404.html      the not-found page, same treatment
 assets/       screenshots, copied from the app repo
 .nojekyll     stops Pages running the files through Jekyll
 ```
@@ -101,15 +102,21 @@ moment you merge. It's a two-word edit; the cost is only in remembering.
 `assets/` is copied from the app repo. To refresh them:
 
 ```bash
-cp ../MacStat/docs/landing/assets/*.png assets/
+cp ../MacStat/docs/screenshots/*.png assets/
 ```
+
+`docs/screenshots/` in the app repo is the master set.
 
 Keep the filenames identical and no HTML changes are needed. If the pixel
 dimensions change, update the matching `width`/`height` attributes on the
 `<img>` so the page doesn't reflow while they load.
 
-Current set: `macos-dashboard.png`, `macos-menubar.png`, `ios-dashboard.png`,
-`ios-alerts.png`, `ios-history.png` (unused), `watch-overview.png`.
+Current set: `macos-dashboard.png` (hero, also the og:image),
+`macos-menubar.png` (dropdown), `ios-dashboard.png`, `ios-alerts.png`,
+`watch-overview.png`.
+
+There is no capture of the desktop widgets yet — that section is text only
+until there is one.
 
 ## A note on the name
 
