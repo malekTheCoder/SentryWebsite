@@ -323,7 +323,10 @@ p{text-wrap:pretty}
 .site-footer nav{display:flex; gap:20px; flex-wrap:wrap}
 
 /* screenshots */
-.screenshot{display:block; width:100%; border:1px solid var(--line); background:var(--bg)}
+.screenshot{
+  display:block; width:100%; border:1px solid var(--line-2); background:var(--bg);
+  box-shadow:0 18px 40px -22px var(--shadow);
+}
 .screenshot--hero{height:100%; min-height:420px; object-fit:cover; object-position:top left}
 .split-shot{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; align-items:center}
 .split-shot .screenshot{max-height:360px; object-fit:contain; object-position:center; background:var(--panel)}
