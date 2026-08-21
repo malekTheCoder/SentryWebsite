@@ -648,13 +648,13 @@ p{text-wrap:pretty}
   <section class="section section--tight" data-reveal>
     <div class="split split--8-12 split--topline">
       <div>
-        <p class="eyebrow">[06] fans</p>
-        <h2 class="h2 h2--sm">Fans you can actually set.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Not a readout — a write. A root helper you install explicitly holds the only code in the project that can put a value into the SMC.</p>
+        <p class="eyebrow">[06] thermals</p>
+        <h2 class="h2 h2--sm">Nothing here runs as root.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Sentry reads every fan and sensor your Mac exposes — RPM per fan, the temperature sensors behind it, thermal pressure and whether the machine is throttling right now.</p>
       </div>
       <div>
-        <p class="lede" style="max-width:56ch; margin-bottom:14px">Every fan control stays disabled until you install the helper from Settings. It verifies its caller twice, expires on a heartbeat, and reverts to firmware control if anything goes quiet.</p>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Apple Silicon only. Fixed-speed mode ships today; the curve editor does not, and the curve is read-only until it does. Fan readout works everywhere.</p>
+        <p class="lede" style="max-width:56ch; margin-bottom:14px">It reads them and never writes them. Setting fan speeds means shipping a privileged helper that runs as root and writes to the SMC; a monitor has no business holding that, so Sentry doesn&rsquo;t. Nothing asks for an admin password, and no part of Sentry runs with elevated privileges.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Fan and sensor readout works on Apple Silicon and Intel. Throttle state and thermal pressure come straight from the system, not inferred.</p>
       </div>
     </div>
   </section>
@@ -663,8 +663,8 @@ p{text-wrap:pretty}
     <div class="split split--8-12 split--topline">
       <div>
         <p class="eyebrow">[07] design</p>
-        <h2 class="h2 h2--sm">Six themes, switchable from the dropdown.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System and Translucent use real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
+        <h2 class="h2 h2--sm">Three themes, switchable from the dropdown.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System uses real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
       </div>
       <div class="themes" id="sim-themes"></div>
     </div>
@@ -702,14 +702,14 @@ p{text-wrap:pretty}
         <p class="eyebrow">free</p>
         <h3>The whole monitor</h3>
         <p class="plan__price">$0</p>
-        <p>Menu bar composer, verdict dropdown, dashboard, history, the six themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps — and the full twenty-tool MCP server.</p>
+        <p>Menu bar composer, verdict dropdown, dashboard, history, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps — and the full twenty-tool MCP server.</p>
         <p class="plan__note">Not a trial. No time limit, no nagging.</p>
       </div>
       <div class="plan plan--pro">
         <p class="eyebrow eyebrow--accent">pro</p>
         <h3>Sentry Pro</h3>
         <p class="plan__price">$14.99 <span class="plan__was">$19.99</span></p>
-        <p>Protection Insights · Fan Control · Conditional Keep-Awake · Process-Match Alerts · Custom Themes · Remote Access · History Export &amp; Retention.</p>
+        <p>Protection Insights · Conditional Keep-Awake · Process-Match Alerts · Custom Themes · Remote Access · History Export &amp; Retention.</p>
         <p class="plan__note">One purchase, yours forever. 3 Macs · no subscription.</p>
       </div>
     </div>
@@ -790,9 +790,8 @@ p{text-wrap:pretty}
     "Charging paused", "Slow charging"];
 
   var THEMES = [
-    ["System", "#F5F5F7", "#1D1D1F"], ["Ivory", "#FAF8F4", "#12110F"],
-    ["Translucent", "#E8E6E3", "#4A4744"], ["One Dark", "#282C34", "#61AFEF"],
-    ["Slate", "#1E293B", "#94A3B8"], ["Tokyo Night", "#1A1B26", "#7AA2F7"]
+    ["System", "#1E1E1E", "#0A84FF"], ["Ivory", "#FAF9F5", "#C96442"],
+    ["One Dark", "#282C34", "#61AFEF"]
   ];
 
   var RANGES = ["24h", "7d", "30d", "90d", "6mo"];
