@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sentry — the macOS system monitor built for the AI-agent era</title>
-<meta name="description" content="Sentry is a native macOS system monitor: thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
+<title>Sentry — a native macOS system monitor with an MCP server</title>
+<meta name="description" content="Sentry is a native macOS system monitor, coming soon: thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
 <link rel="canonical" href="https://malekswilam.dev/SentryWebsite/">
 <meta name="theme-color" content="#0B0D0F" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAF8F4" media="(prefers-color-scheme: light)">
@@ -12,8 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sentry">
 <meta property="og:url" content="https://malekswilam.dev/SentryWebsite/">
-<meta property="og:title" content="Sentry — the macOS system monitor built for the AI-agent era">
-<meta property="og:description" content="Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
+<meta property="og:title" content="Sentry — a native macOS system monitor with an MCP server">
+<meta property="og:description" content="Coming soon. Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
 <meta property="og:image" content="https://malekswilam.dev/SentryWebsite/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,8 +22,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://malekswilam.dev/SentryWebsite/assets/og-card.png">
 <meta name="twitter:image:alt" content="Sentry — the headline “Is my Mac OK?” beside a screenshot of the macOS dashboard window.">
-<meta name="twitter:title" content="Sentry — the macOS system monitor built for the AI-agent era">
-<meta name="twitter:description" content="Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
+<meta name="twitter:title" content="Sentry — a native macOS system monitor with an MCP server">
+<meta name="twitter:description" content="Coming soon. Thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0D0F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23F0A961'/%3E%3C/svg%3E">
 
@@ -410,7 +410,7 @@ p{text-wrap:pretty}
   <div class="brand">
     <span class="brand__dot" aria-hidden="true"></span>
     <span class="brand__name">Sentry</span>
-    <span class="brand__meta">v1.0 · macOS 14+ · universal</span>
+    <span class="brand__meta">macOS 14+ · coming soon</span>
   </div>
   <nav class="site-nav" aria-label="Primary">
     <a href="#monitoring">monitoring</a>
@@ -418,19 +418,20 @@ p{text-wrap:pretty}
     <a href="#battery">battery</a>
     <a href="#themes">themes</a>
     <button class="theme-btn" id="theme-toggle" type="button" aria-label="Colour theme: follow system">[ theme: auto ]</button>
-    <a class="btn-ghost" href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg">download</a>
+    <a class="btn-ghost" href="https://github.com/malekTheCoder/Sentry" rel="noopener">github</a>
   </nav>
 </header>
 
 <main>
   <section class="hero">
-    <p class="hero__kicker"><span style="color:var(--accent)">[ ● ]</span><span>the mac system monitor built for the ai-agent era</span></p>
+    <p class="hero__kicker"><span style="color:var(--accent)">[ ● ]</span><span>a native macos system monitor · coming soon</span></p>
     <h1>Is my Mac <em>OK?</em></h1>
     <div class="hero__grid">
       <p class="hero__copy">One sentence answers it. Everything underneath is one click deep: thermals, energy, battery forecasting, per-process load. And your coding agents can read all of it over MCP.</p>
       <div class="hero__cta">
-        <a class="btn-solid" href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg">download for mac →</a>
-        <span class="hero__note">v1.0 · macOS 14+ · universal · free · no account required</span>
+        <a class="btn-solid" href="https://github.com/malekTheCoder/Sentry" rel="noopener">follow it on github →</a>
+        <span class="hero__note">Coming soon · macOS 14+ · universal · free, no account</span>
+        <span class="hero__note">Not released yet. An <a href="https://github.com/malekTheCoder/Sentry/releases/latest/download/Sentry.dmg" rel="noopener" style="color:var(--body); text-decoration:underline; text-underline-offset:3px">early Mac build</a> is on GitHub if you want to try it now.</span>
       </div>
     </div>
 
@@ -483,18 +484,18 @@ p{text-wrap:pretty}
       <div class="marquee__track">
         <div class="marquee__set">
           <span><span>◆</span> no accounts · no telemetry · no server</span>
-          <span><span>◆</span> 100% native swift + swiftui, no electron</span>
+          <span><span>◆</span> native swift + swiftui, no electron</span>
           <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
-          <span><span>◆</span> extensive voiceover labelling</span>
+          <span><span>◆</span> voiceover labels on every reading</span>
           <span><span>◆</span> sentryctl cli + SentryMCP stdio binary</span>
         </div>
         <div class="marquee__set" aria-hidden="true">
           <span><span>◆</span> no accounts · no telemetry · no server</span>
-          <span><span>◆</span> 100% native swift + swiftui, no electron</span>
+          <span><span>◆</span> native swift + swiftui, no electron</span>
           <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
-          <span><span>◆</span> extensive voiceover labelling</span>
+          <span><span>◆</span> voiceover labels on every reading</span>
           <span><span>◆</span> sentryctl cli + SentryMCP stdio binary</span>
         </div>
       </div>
@@ -517,7 +518,7 @@ p{text-wrap:pretty}
     <div class="trio">
       <div>
         <h3 class="h3">Verdict first</h3>
-        <p>One sentence, then a dense vitals table with per-module meters that stay grey until something needs you, and expandable rows. Everything in one glance. The dropdown never scrolls.</p>
+        <p>One sentence, then a vitals table with per-module meters that stay grey until something needs you, and expandable rows. The dropdown never scrolls.</p>
       </div>
       <div>
         <h3 class="h3">Three bands</h3>
@@ -567,7 +568,7 @@ p{text-wrap:pretty}
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <h2 class="h2 h2--flush">Stay awake exactly as long as the job takes.</h2>
       <div>
-        <p class="lede" style="margin-bottom:20px">Thirteen ways to hold the wake lock, not one. Pick a duration, hold it indefinitely, run it until a set time, or tie it to a condition and let it release itself.</p>
+        <p class="lede" style="margin-bottom:20px">Thirteen ways to hold the wake lock. Pick a duration, hold it indefinitely, run it until a set time, or tie it to a condition and let it release itself.</p>
         <div class="tags" style="margin-bottom:20px">
           <span class="tag">Indefinitely</span><span class="tag">15m</span><span class="tag">30m</span>
           <span class="tag">1h</span><span class="tag">2h</span><span class="tag">4h</span><span class="tag">8h</span>
@@ -575,18 +576,18 @@ p{text-wrap:pretty}
           <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
           <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro. Amphetamine, evolved for long-running agent work.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro.</p>
       </div>
     </div>
   </section>
 
   <section class="band" id="agents" style="margin-top:96px" data-reveal>
     <div class="wrap" style="padding-top:88px; padding-bottom:88px">
-      <p class="eyebrow eyebrow--accent"><span aria-hidden="true">[03]</span> ai-agent integration · the differentiator</p>
+      <p class="eyebrow eyebrow--accent"><span aria-hidden="true">[03]</span> mcp server</p>
       <div class="split split--105-1" style="align-items:start; margin-top:16px">
         <div>
           <h2 class="h2 h2--lg">Your agents can ask <em style="font-style:italic">“is now a good time?”</em></h2>
-          <p class="lede" style="max-width:54ch">A built-in MCP server, off until you switch it on, exposes twenty tools — one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code and Zed; Windsurf and anything else take a config snippet you paste. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
+          <p class="lede" style="max-width:54ch">MCP is the protocol Claude Code, Cursor and the rest use to call tools on your machine. Sentry ships a server for it, off until you switch it on — so instead of an agent starting a four-minute compile on a laptop already throttling at 97°C, it can ask first and get a number back. Twenty tools in all, with one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code and Zed; Windsurf and anything else take a config snippet you paste. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
           <div class="tags" style="margin-top:24px" id="sim-tools"></div>
           <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions with writes off by default, a native confirmation dialog on every write, per-client rate limits and a live activity log. Behind that sits a guardrails layer: kill switch, per-client revocation by the name a client reports for itself, a battery floor, an on-battery write ban, quiet hours and thermal auto-revoke. Remote access is opt-in HTTP with bearer-key auth — it binds every interface, so put it behind your firewall.</p>
         </div>
@@ -613,7 +614,7 @@ p{text-wrap:pretty}
     <p class="eyebrow"><span aria-hidden="true">[04]</span> battery analytics</p>
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <div>
-        <h2 class="h2 h2--flush" style="margin-bottom:18px">Health, forecast forward.</h2>
+        <h2 class="h2 h2--flush" style="margin-bottom:18px">When this battery hits 80%.</h2>
         <p class="lede" style="max-width:50ch">A least-squares fit over the health readings says when this one reaches 80%. With fewer than five readings, or less than a fortnight of them, it shows no forecast at all rather than a confident line drawn through three points.</p>
         <div class="cells cells--2" style="margin-top:26px">
           <div class="cell"><div class="cell__key">Health</div><div class="cell__val cell__val--sm tabnum">78.2%</div></div>
@@ -684,7 +685,7 @@ p{text-wrap:pretty}
   <section class="section section--tight">
     <p class="eyebrow"><span aria-hidden="true">[08]</span> companions</p>
     <h2 class="h2" style="max-width:20ch">It follows you off the desk.</h2>
-    <p class="lede" style="max-width:60ch; margin-top:-4px">The Mac app is out. The iPhone and Apple Watch apps are built and working against it, but neither is released yet &mdash; there is no App Store or TestFlight build, only source you can compile.</p>
+    <p class="lede" style="max-width:60ch; margin-top:-4px">None of the three is released yet. All of them are built and working against each other; the iPhone and Watch apps have no App Store or TestFlight build at all, only source you can compile.</p>
     <div class="cards-3">
       <div class="card">
         <img class="screenshot" src="assets/ios-dashboard.png" width="1206" height="2622" loading="lazy" decoding="async"
@@ -740,7 +741,7 @@ p{text-wrap:pretty}
       <div class="cell"><div class="cell__key">Storage</div><div class="cell__spec">Local GRDB / SQLite</div></div>
       <div class="cell"><div class="cell__key">Network</div><div class="cell__spec">No accounts, no telemetry</div></div>
       <div class="cell"><div class="cell__key">Also ships</div><div class="cell__spec">sentryctl CLI · SentryMCP stdio binary</div></div>
-      <div class="cell"><div class="cell__key">Accessibility</div><div class="cell__spec">Extensive VoiceOver labelling</div></div>
+      <div class="cell"><div class="cell__key">Accessibility</div><div class="cell__spec">VoiceOver labels on every reading</div></div>
       <div class="cell"><div class="cell__key">Source</div><div class="cell__spec"><a href="https://github.com/malekTheCoder/Sentry" rel="noopener">MIT licensed on GitHub</a></div></div>
       <div class="cell"><div class="cell__key">Built by</div><div class="cell__spec">Malek Swilam &amp; Aniketh Bandlamudi</div></div>
     </div>
