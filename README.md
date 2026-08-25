@@ -9,10 +9,11 @@ Live at **<https://malekswilam.dev/SentryWebsite/>**.
 ## What's here
 
 ```
-index.html    the entire page — inline CSS, inline JS, no build step
-404.html      the not-found page, same treatment
-assets/       screenshots, copied from the app repo
-.nojekyll     stops Pages running the files through Jekyll
+index.html           the entire page — inline CSS, inline JS, no build step
+404.html             the not-found page, same treatment
+apple-touch-icon.png 180x180, for iOS home screens
+assets/              screenshots (avif + webp + png) and the social card
+.nojekyll            stops Pages running the files through Jekyll
 ```
 
 That's deliberate. There is no bundler, no package.json, no dependency to
@@ -116,24 +117,35 @@ moment you merge. It's a two-word edit; the cost is only in remembering.
 
 ## Screenshots
 
-`assets/` is copied from the app repo. To refresh them:
+Every screenshot ships three times — `.avif`, `.webp` and a `.png`
+fallback — inside a `<picture>`. **Do not just copy PNGs over the top.**
+That would replace the resized, stripped files with full-resolution captures
+and leave the `.avif`/`.webp` siblings showing the old image, since browsers
+pick those first.
+
+To refresh one, start from the master in `../MacStat/docs/screenshots/`,
+resize to roughly 2x its largest displayed size, then re-encode all three:
 
 ```bash
-cp ../MacStat/docs/screenshots/*.png assets/
+cwebp  -q 82 -sharp_yuv shot.png -o assets/shot.webp
+avifenc -y 444 -q 64 shot.png assets/shot.avif
+pngquant --strip --force --output assets/shot.png -- shot.png
 ```
 
-`docs/screenshots/` in the app repo is the master set.
+`-y 444` matters: chroma subsampling smears the small coloured text in these
+UI captures. Strip metadata on all three, then update the `width`/`height`
+attributes on the `<img>` to the new intrinsic size, or the page reserves
+the wrong box and shifts as it loads.
 
-Keep the filenames identical and no HTML changes are needed. If the pixel
-dimensions change, update the matching `width`/`height` attributes on the
-`<img>` so the page doesn't reflow while they load.
+Current set: `macos-dashboard` (hero), `macos-menubar` (dropdown),
+`ios-dashboard`, `ios-alerts`, `watch-overview`. Plus `og-card.png` — the
+1200x630 social card, PNG only and never rendered in the page, so scrapers
+that reject modern formats still get it.
 
-Current set: `macos-dashboard.png` (hero, also the og:image),
-`macos-menubar.png` (dropdown), `ios-dashboard.png`, `ios-alerts.png`,
-`watch-overview.png`.
-
-There is no capture of the desktop widgets yet — that section is text only
-until there is one.
+Two gaps: there is no capture of the desktop widgets, so that section is
+text only; and every capture exists in one appearance, so the macOS shots
+wash out on the light theme and the iPhone and Watch shots wash out on the
+dark one.
 
 ## A note on the name
 
