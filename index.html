@@ -482,7 +482,7 @@ p{text-wrap:pretty}
     <div class="marquee">
       <div class="marquee__track">
         <div class="marquee__set">
-          <span><span>◆</span> your data never leaves the mac</span>
+          <span><span>◆</span> no accounts · no telemetry · no server</span>
           <span><span>◆</span> 100% native swift + swiftui, no electron</span>
           <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
@@ -490,7 +490,7 @@ p{text-wrap:pretty}
           <span><span>◆</span> sentryctl cli + SentryMCP stdio binary</span>
         </div>
         <div class="marquee__set" aria-hidden="true">
-          <span><span>◆</span> your data never leaves the mac</span>
+          <span><span>◆</span> no accounts · no telemetry · no server</span>
           <span><span>◆</span> 100% native swift + swiftui, no electron</span>
           <span><span>◆</span> universal · apple silicon + intel</span>
           <span><span>◆</span> sqlite time-series store</span>
@@ -521,7 +521,7 @@ p{text-wrap:pretty}
       </div>
       <div>
         <h3 class="h3">Three bands</h3>
-        <p>The Dashboard window splits into Power, Activity and History. A floating liquid-glass switcher toggles Dashboard ↔ Settings. One window, no sprawl.</p>
+        <p>The Dashboard window splits into Power, Activity and History, with Insights and Settings one click away in the same window. Insights is the one that answers what to actually do about any of it.</p>
       </div>
       <div>
         <h3 class="h3">History that keeps</h3>
@@ -586,9 +586,9 @@ p{text-wrap:pretty}
       <div class="split split--105-1" style="align-items:start; margin-top:16px">
         <div>
           <h2 class="h2 h2--lg">Your agents can ask <em style="font-style:italic">“is now a good time?”</em></h2>
-          <p class="lede" style="max-width:54ch">A built-in MCP server, off until you switch it on, exposes twenty tools — with one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code, Zed and Windsurf — or a config snippet for any other MCP client. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
+          <p class="lede" style="max-width:54ch">A built-in MCP server, off until you switch it on, exposes twenty tools — one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code and Zed; Windsurf and anything else take a config snippet you paste. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
           <div class="tags" style="margin-top:24px" id="sim-tools"></div>
-          <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions with writes off by default, a native confirmation dialog on every write, per-client rate limits and a live activity log. Behind that sits a guardrails layer: kill switch, per-client revocation, a battery floor, an on-battery write ban, quiet hours and thermal auto-revoke. Remote access is opt-in HTTP with bearer-key auth — it binds every interface, so put it behind your firewall.</p>
+          <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions with writes off by default, a native confirmation dialog on every write, per-client rate limits and a live activity log. Behind that sits a guardrails layer: kill switch, per-client revocation by the name a client reports for itself, a battery floor, an on-battery write ban, quiet hours and thermal auto-revoke. Remote access is opt-in HTTP with bearer-key auth — it binds every interface, so put it behind your firewall.</p>
         </div>
         <div class="stack">
           <div class="term">
@@ -614,10 +614,10 @@ p{text-wrap:pretty}
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <div>
         <h2 class="h2 h2--flush" style="margin-bottom:18px">Health, forecast forward.</h2>
-        <p class="lede" style="max-width:50ch">At the current degradation rate, health crosses 80% around <span class="hi">March 2027</span>. Sentry is honest about thin data and never extrapolates past what the fit can defend.</p>
+        <p class="lede" style="max-width:50ch">A least-squares fit over the health readings says when this one reaches 80%. With fewer than five readings, or less than a fortnight of them, it shows no forecast at all rather than a confident line drawn through three points.</p>
         <div class="cells cells--2" style="margin-top:26px">
-          <div class="cell"><div class="cell__key">Health</div><div class="cell__val cell__val--sm tabnum">91%</div></div>
-          <div class="cell"><div class="cell__key">Cycles</div><div class="cell__val cell__val--sm tabnum">284</div></div>
+          <div class="cell"><div class="cell__key">Health</div><div class="cell__val cell__val--sm tabnum">78.2%</div></div>
+          <div class="cell"><div class="cell__key">Cycles</div><div class="cell__val cell__val--sm tabnum">682</div></div>
           <div class="cell"><div class="cell__key">Energy today</div><div class="cell__val cell__val--sm tabnum">0.42 kWh</div></div>
           <div class="cell"><div class="cell__key">Charging</div><div class="cell__val cell__val--sm tabnum">67 W</div></div>
         </div>
@@ -637,7 +637,7 @@ p{text-wrap:pretty}
         </div>
         <div class="axis">
           <span>jan 2024</span>
-          <span>today · 91%</span>
+          <span>today · 78.2%</span>
           <span style="color:var(--accent)">mar 2027 · 80%</span>
         </div>
       </div>
