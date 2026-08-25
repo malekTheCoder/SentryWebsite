@@ -577,7 +577,7 @@ p{text-wrap:pretty}
       <div class="split split--105-1" style="align-items:start; margin-top:16px">
         <div>
           <h2 class="h2 h2--lg">Your agents can ask <em style="font-style:italic">“is now a good time?”</em></h2>
-          <p class="lede" style="max-width:54ch">A built-in MCP server exposes twenty tools, with one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code, Zed and Windsurf — or a config snippet for any other MCP client. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
+          <p class="lede" style="max-width:54ch">A built-in MCP server, off until you switch it on, exposes twenty tools — with one-click setup for Claude Code, Claude Desktop, Codex CLI, Cursor, VS Code, Zed and Windsurf — or a config snippet for any other MCP client. Snapshots, battery health history, thermal state. And a <span class="hi">preflight_check</span> that fits a least-squares slope over recent temperature samples to return a cool-down ETA, so agents schedule instead of poll.</p>
           <div class="tags" style="margin-top:24px" id="sim-tools"></div>
           <p style="font-size:13px; color:var(--dim-2); margin-top:24px; max-width:56ch; line-height:1.7">Per-tool permissions with writes off by default, a native confirmation dialog on every write, per-client rate limits and a live activity log. Behind that sits a guardrails layer: kill switch, per-client revocation, a battery floor, an on-battery write ban, quiet hours and thermal auto-revoke. Remote access is opt-in HTTP with bearer-key auth — it binds every interface, so put it behind your firewall.</p>
         </div>
@@ -639,8 +639,8 @@ p{text-wrap:pretty}
     <div class="split split--8-12 split--topline">
       <div>
         <p class="eyebrow">[05] alerts</p>
-        <h2 class="h2 h2--sm">Fourteen rules, all editable.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own. Severity is never carried by colour alone.</p>
+        <h2 class="h2 h2--sm">Fourteen rules you can tune.</h2>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
       </div>
       <div class="tags" id="sim-alerts"></div>
     </div>
@@ -683,9 +683,9 @@ p{text-wrap:pretty}
       </div>
       <div class="card">
         <img class="screenshot" src="assets/ios-alerts.png" width="1206" height="2622" loading="lazy" decoding="async"
-             alt="The alerts tab of the Sentry iPhone app, listing configurable alert rules.">
-        <h3>Alerts that reach you</h3>
-        <p>The same fourteen rules, with the same quiet hours and cooldowns, delivered wherever you are.</p>
+             alt="The alerts tab of the Sentry iPhone app, listing the fourteen alert rules and their thresholds.">
+        <h3>See what's armed</h3>
+        <p>The iPhone lists the same fourteen rules and their thresholds, so you can check what's watching. Evaluation and notification stay on the Mac.</p>
       </div>
       <div class="card">
         <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
@@ -793,7 +793,7 @@ p{text-wrap:pretty}
     "Charging paused", "Slow charging"];
 
   var THEMES = [
-    ["System", "#1E1E1E", "#0A84FF"], ["Ivory", "#FAF9F5", "#C96442"],
+    ["System", "#1E1E1E", "#0A84FF"], ["Ivory", "#262624", "#D97757"],
     ["One Dark", "#282C34", "#61AFEF"]
   ];
 
