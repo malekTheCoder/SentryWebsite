@@ -6,7 +6,8 @@
 <title>Sentry — the macOS system monitor built for the AI-agent era</title>
 <meta name="description" content="Sentry is a native macOS system monitor: thermals, energy, battery forecasting, per-process load — and an MCP server so your coding agents can read all of it.">
 <link rel="canonical" href="https://malekswilam.dev/SentryWebsite/">
-<meta name="theme-color" content="#0B0D0F">
+<meta name="theme-color" content="#0B0D0F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAF8F4" media="(prefers-color-scheme: light)">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sentry">
@@ -27,6 +28,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B0D0F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23F0A961'/%3E%3C/svg%3E">
 
 <script>(function(){try{var m=localStorage.getItem('sentry-theme');if(m==='light'||m==='dark')document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -495,7 +498,7 @@ p{text-wrap:pretty}
   <section class="section" id="monitoring" data-reveal>
     <div class="split split--9-11">
       <div>
-        <p class="eyebrow">[01] core monitoring</p>
+        <p class="eyebrow"><span aria-hidden="true">[01]</span> core monitoring</p>
         <h2 class="h2">A menu bar you compose yourself.</h2>
         <p class="lede" style="max-width:52ch; margin-bottom:16px">Nine modules — battery, CPU, GPU, Neural Engine, memory, disk, network, thermals, system — shown as values, icons, sparklines, bars or arcs. Drag to reorder. Per-module thresholds. Visibility rules, like <span class="hi">only show battery when discharging</span>.</p>
         <p class="lede" style="max-width:52ch">Rendered strictly monochrome, so it stays legible on any wallpaper, with a single <span class="hi">!</span> when something crosses critical.</p>
@@ -554,7 +557,7 @@ p{text-wrap:pretty}
   </section>
 
   <section class="section" data-reveal>
-    <p class="eyebrow">[02] sleep control</p>
+    <p class="eyebrow"><span aria-hidden="true">[02]</span> sleep control</p>
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <h2 class="h2 h2--flush">Stay awake exactly as long as the job takes.</h2>
       <div>
@@ -573,7 +576,7 @@ p{text-wrap:pretty}
 
   <section class="band" id="agents" style="margin-top:96px" data-reveal>
     <div class="wrap" style="padding-top:88px; padding-bottom:88px">
-      <p class="eyebrow eyebrow--accent">[03] ai-agent integration · the differentiator</p>
+      <p class="eyebrow eyebrow--accent"><span aria-hidden="true">[03]</span> ai-agent integration · the differentiator</p>
       <div class="split split--105-1" style="align-items:start; margin-top:16px">
         <div>
           <h2 class="h2 h2--lg">Your agents can ask <em style="font-style:italic">“is now a good time?”</em></h2>
@@ -601,7 +604,7 @@ p{text-wrap:pretty}
   </section>
 
   <section class="section" id="battery" data-reveal>
-    <p class="eyebrow">[04] battery analytics</p>
+    <p class="eyebrow"><span aria-hidden="true">[04]</span> battery analytics</p>
     <div class="split split--1-1" style="align-items:start; margin-top:16px">
       <div>
         <h2 class="h2 h2--flush" style="margin-bottom:18px">Health, forecast forward.</h2>
@@ -638,7 +641,7 @@ p{text-wrap:pretty}
   <section class="section section--tight">
     <div class="split split--8-12 split--topline">
       <div>
-        <p class="eyebrow">[05] alerts</p>
+        <p class="eyebrow"><span aria-hidden="true">[05]</span> alerts</p>
         <h2 class="h2 h2--sm">Fourteen rules you can tune.</h2>
         <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own, on any metric; rules that match a named process are Pro. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
       </div>
@@ -649,14 +652,14 @@ p{text-wrap:pretty}
   <section class="section section--tight" data-reveal>
     <div class="split split--8-12 split--topline">
       <div>
-        <p class="eyebrow">[06] thermals</p>
+        <p class="eyebrow"><span aria-hidden="true">[06]</span> thermals</p>
         <h2 class="h2 h2--sm">Nothing here runs as root.</h2>
         <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Sentry reads every fan and sensor your Mac exposes — RPM per fan, the temperature sensors behind it, thermal pressure and whether the machine is throttling right now.</p>
       </div>
       <div>
         <p class="lede" style="max-width:56ch; margin-bottom:14px">It reads them and never writes them. Setting fan speeds means shipping a helper that runs as root and writes to the SMC; a monitor has no business holding that, so Sentry doesn&rsquo;t. No part of Sentry runs as root, and nothing it installs does either &mdash; the one background component it can add, the command-line bridge, is a login item that runs as you, only if you turn it on.</p>
         <p style="margin:0 0 14px; font-size:13px; color:var(--dim-2); line-height:1.7">Sentry is not sandboxed, because thermal and power sensors cannot be read from inside the sandbox; it is signed with a Developer ID and notarised instead. The only permission prompt it raises on its own is Local Network, so your iPhone and Watch can find your Mac. Older builds could install a root fan helper &mdash; this one unregisters it on launch, and macOS may ask you to authorise that removal once.</p>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Fan and sensor readout works on Apple Silicon and Intel. Throttle state and thermal pressure come straight from the system, not inferred.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Fan and sensor readout needs Apple Silicon. On an Intel Mac the same build runs natively and reports CPU, memory, disk, thermal pressure and throttle state, but not per-block power or a temperature in degrees. Throttle state and thermal pressure come straight from the system on both, not inferred.</p>
       </div>
     </div>
   </section>
@@ -664,7 +667,7 @@ p{text-wrap:pretty}
   <section class="section section--tight" id="themes" data-reveal>
     <div class="split split--8-12 split--topline">
       <div>
-        <p class="eyebrow">[07] design</p>
+        <p class="eyebrow"><span aria-hidden="true">[07]</span> design</p>
         <h2 class="h2 h2--sm">Three themes, switchable from the dropdown.</h2>
         <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System uses real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
       </div>
@@ -673,38 +676,44 @@ p{text-wrap:pretty}
   </section>
 
   <section class="section section--tight">
-    <p class="eyebrow">[08] companions</p>
+    <p class="eyebrow"><span aria-hidden="true">[08]</span> companions</p>
     <h2 class="h2" style="max-width:20ch">It follows you off the desk.</h2>
     <div class="cards-3">
       <div class="card">
         <img class="screenshot" src="assets/ios-dashboard.png" width="1206" height="2622" loading="lazy" decoding="async"
              alt="The Sentry iPhone app showing a Mac's battery at 76 percent charging, a 60-second CPU and memory chart, and a vitals list.">
         <h3>Your Mac, from your pocket</h3>
-        <p>A full iPhone app — dashboard, history, alerts, settings — fed over Bonjour on your own network, encrypted with TLS. Reaching your Mac from outside that network is Pro.</p>
+        <p>A full iPhone app — dashboard, history, alerts, settings — found over Bonjour and read straight off your Mac, in the clear, on your own network. Reaching it from outside that network is Pro, and that path is TLS-PSK encrypted from a pairing code.</p>
       </div>
       <div class="card">
         <img class="screenshot" src="assets/ios-alerts.png" width="1206" height="2622" loading="lazy" decoding="async"
              alt="The alerts tab of the Sentry iPhone app, listing the fourteen alert rules and their thresholds.">
-        <h3>See what's armed</h3>
+        <h3>See what&rsquo;s armed</h3>
         <p>The iPhone lists the same fourteen rules and their thresholds, so you can check what's watching. Evaluation and notification stay on the Mac.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Keep-awake on the Lock Screen</h3>
+        <p>Start a hold from the iPhone and it becomes a Live Activity, with an End button in the Dynamic Island. A timed hold is drawn by the system from its deadline, so it stays right for hours with the app never running. An indefinite hold says so rather than pretending to tick, and if your Mac stops confirming, it says that too instead of counting down on a promise it cannot check.</p>
       </div>
       <div class="card">
         <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
              alt="The Sentry Apple Watch app showing a 76 percent battery ring, 46 minutes to full, and CPU, memory and disk dials.">
         <h3>And your wrist</h3>
-        <p>A three-page watchOS app — overview, keep-awake, agent activity — plus a complication, themed to match the Mac.</p>
+        <p>A three-page watchOS app — overview, keep-awake, agent activity — themed from the Mac’s own palette, plus a complication in four families.</p>
       </div>
     </div>
-    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:70ch">Desktop widgets too, in three sizes, fed live by the app, with a Control Centre toggle for keep-awake. The iPhone widgets currently render labelled demo data and say so.</p>
+    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:70ch"><span class="hi">The iPhone and Watch apps are not released yet.</span> They are in the repository and build from source; there is no App Store or TestFlight build to install today. The Mac app is the one you can download. Desktop widgets too, in three sizes, fed live by the app. On iPhone there is a Control Centre keep-awake control as well, and the iPhone widgets show live readings whenever the phone can reach your Mac — demo data otherwise, labelled as demo.</p>
   </section>
 
   <section class="section section--tight">
+    <p class="eyebrow"><span aria-hidden="true">[09]</span> what it costs</p>
+    <h2 class="h2 h2--sm" id="pricing-heading">Free, with six features held back.</h2>
     <div class="cells cells--2">
       <div class="plan">
         <p class="eyebrow">free</p>
         <h3>The whole monitor</h3>
         <p class="plan__price">$0</p>
-        <p>Menu bar composer, verdict dropdown, dashboard, history charts, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps on your own network — and the full twenty-tool MCP server, every tool, every guardrail.</p>
+        <p>Menu bar composer, verdict dropdown, dashboard, history charts, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, and the full twenty-tool MCP server, every tool, every guardrail.</p>
         <p class="plan__note">Not a trial. No time limit, no nagging.</p>
       </div>
       <div class="plan plan--pro">
@@ -737,7 +746,7 @@ p{text-wrap:pretty}
         <h2>Told when it changes.</h2>
         <p>v1.0 is out. Sign up and you get an email when a release lands — nothing else, and one click to leave.</p>
       </div>
-      <form class="signup" id="signup" method="post" target="_blank" novalidate>
+      <form class="signup" id="signup" method="post" target="_blank" rel="noopener" novalidate>
         <div class="signup__field">
           <label for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Email address</label>
           <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
