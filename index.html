@@ -336,7 +336,10 @@ p{text-wrap:pretty}
 .site-footer nav{display:flex; gap:20px; flex-wrap:wrap}
 
 /* screenshots */
+/* display:contents promotes picture's children into the parent's layout,
+   and <source> has no UA display:none — without this they become grid items. */
 picture{display:contents}
+source{display:none}
 .screenshot{
   display:block; width:100%; border:1px solid var(--line-2); background:var(--bg);
   box-shadow:0 18px 40px -22px var(--shadow);
@@ -485,7 +488,7 @@ picture{display:contents}
           <picture>
              <source type="image/avif" srcset="assets/macos-dashboard.avif">
              <source type="image/webp" srcset="assets/macos-dashboard.webp">
-             <img class="screenshot screenshot--hero" src="assets/macos-dashboard.png" width="1908" height="1440" loading="eager" decoding="async"
+             <img class="screenshot screenshot--hero" src="assets/macos-dashboard.png" width="1908" height="1440" loading="eager" fetchpriority="high" decoding="async"
                  alt="Sentry's dashboard window: CPU, memory and GPU sparklines above a combined 24-hour chart, with battery health, cycle count and energy use below.">
            </picture>
         </div>
