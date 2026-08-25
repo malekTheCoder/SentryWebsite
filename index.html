@@ -73,7 +73,7 @@
 /* The menu bar pill and the terminal blocks stay dark in both themes: they
    are renderings of a black menu bar and a terminal, and inverting them
    would misrepresent what the app looks like. */
-.term,.menubar{
+.term,.menubar,.signup__field{
   --line:#1E2328; --line-2:#2A3036;
   --fg:#E6EAED; --fg-2:#C7CDD2; --body:#9AA2A8; --dim:#8A939B; --dim-2:#7C848A;
   --accent:oklch(0.80 0.15 70); --bad:oklch(0.64 0.19 27);
@@ -372,9 +372,14 @@ source{display:none}
   .showcase__grid{grid-template-columns:1fr}
   .shot--hero{min-height:280px}
   .split--9-11,.split--8-12,.split--1-1,.split--105-1{grid-template-columns:1fr; gap:40px}
-  .waitlist{grid-template-columns:1fr; gap:32px}
+  .waitlist{grid-template-columns:minmax(0,1fr); gap:32px}
   .trio{grid-template-columns:1fr; gap:28px}
   .section{padding-top:76px}
+}
+@media (max-width:900px){
+  /* .brand__meta is nowrap inside a min-width:0 flex item, so it overprints
+     the nav from about 884px down — hide it before they meet, not at 820. */
+  .brand__meta{display:none}
 }
 @media (max-width:820px){
   :root{--pad:20px}
@@ -383,7 +388,7 @@ source{display:none}
   /* the toggle stays — following the system theme matters most on a phone */
   .site-nav{gap:12px}
   .theme-btn{padding:7px 8px; letter-spacing:0.04em}
-  .brand__meta{display:none}
+  /* moved to its own 900px query — it collided with the nav well above 820 */
   .hero__grid{grid-template-columns:1fr; gap:28px; align-items:start}
   .hero__cta{align-items:stretch}
   .btn-solid{text-align:center}
@@ -396,6 +401,12 @@ source{display:none}
   .menubar-rail{justify-content:flex-start}
   .section{padding-top:64px}
   .site-footer{gap:12px}
+}
+@media (max-width:400px){
+  .site-nav{gap:8px}
+  .theme-btn{font-size:10px; padding:7px 6px; letter-spacing:0.02em}
+  .signup__field{flex-direction:column}
+  .signup button{padding:14px 22px}
 }
 @media (max-width:560px){
   .cells--2,.cells--3,.cells--4{grid-template-columns:1fr}
@@ -442,7 +453,7 @@ source{display:none}
 
 <main>
   <section class="hero">
-    <p class="hero__kicker"><span style="color:var(--accent)">[ ● ]</span><span>a native macos system monitor · coming soon</span></p>
+    <p class="hero__kicker"><span style="color:var(--accent); flex:none">[ ● ]</span><span>a native macos system monitor · coming soon</span></p>
     <h1>Is my Mac <em>OK?</em></h1>
     <div class="hero__grid">
       <p class="hero__copy">One sentence answers it. Everything underneath is one click deep: thermals, energy, battery forecasting, per-process load. And your coding agents can read all of it over MCP.</p>
