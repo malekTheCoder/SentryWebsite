@@ -84,15 +84,32 @@ stale — all of them live in `index.html`:
 | Claim on the page | Source of truth in the app repo |
 |---|---|
 | 9 menu bar modules | `SentryKit/Models/MetricID.swift` → `MetricModule` |
-| 6 themes | `SentryKit/Settings/Theme.swift` → `builtInPresets` |
+| 3 themes, and their swatch hexes | `SentryKit/Settings/Theme.swift` → `builtInPresets` |
+| Only System uses behind-window blur | `Theme.swift` → `useMaterialBackground` |
 | 14 alert rules | `SentryKit/Services/AlertEngine.swift` → `defaultRules` |
+| 2 of those have no editable condition | `Sentry/Settings/Panes/AlertsPane.swift` (read-only rows) |
 | 20 MCP tools | `SentryKit/Services/MCPTool.swift` → `MCPToolID` |
-| 13 keep-awake modes | `Sentry/Dropdown/SleepControlCard.swift` |
-| Pro feature list | `SentryKit/Pro/ProEntitlement.swift` → `ProFeature` |
+| 30-minute cooldown, 6/hour rate cap | `AppSettings.swift` → `defaultAlertCooldownMinutes`, `AlertEngine` → `rateCapPerHour` |
+| 48h raw / 90d hourly / daily forever | `SentryKit/Persistence/RollupJob.swift` |
+| 13 keep-awake modes, 8 free / 5 Pro | `Sentry/Dropdown/SleepControlCard.swift` → `isConditional` |
+| The six Pro features | `SentryKit/Pro/ProEntitlement.swift` → `ProFeature` |
 | History ranges 24h–6mo | `Sentry/Dashboard/TimeRangePicker.swift` |
-| macOS 14+, universal | `project.yml` deployment target |
+| macOS 14+, universal binary | `project.yml` → `deploymentTarget`; `ARCHS` is unset, so standard |
+| Sensors need Apple Silicon | `SystemMetricsKit/Bridges/` — no `#if arch` anywhere; HID/IOReport are AS-only |
+| Nothing runs as root | no `SMAppService.daemon` register, no `SMJobBless`, no setuid |
 | `sentryctl`, `SentryMCP` | `project.yml` → `EXECUTABLE_NAME` |
-| $14.99 / $19.99, 3 Macs | the Pro plan card, and pricing decisions |
+| **Pro cannot be bought** | `SentryKit/Pro/License.swift` → `productionPublicKeyBase64` is `nil` |
+| **iPhone/Watch are not distributed** | `project.yml` — one scheme, and it builds none of them |
+
+Two of these are load-bearing and easy to get wrong:
+
+- **Pro is not purchasable.** No public key is embedded, so every licence
+  blob fails verification, and there is no activation backend. The page says
+  the price is planned and the features are locked. If checkout opens, that
+  copy has to change with it.
+- **The companion apps ship in nothing.** They are real code built by no
+  scheme. The page says so. If they ever get a release channel, the free
+  tier list and the companions section both need revisiting.
 
 If you add a theme or an alert rule, the number on the page is wrong the
 moment you merge. It's a two-word edit; the cost is only in remembering.
