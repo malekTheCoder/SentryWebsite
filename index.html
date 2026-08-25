@@ -336,6 +336,7 @@ p{text-wrap:pretty}
 .site-footer nav{display:flex; gap:20px; flex-wrap:wrap}
 
 /* screenshots */
+picture{display:contents}
 .screenshot{
   display:block; width:100%; border:1px solid var(--line-2); background:var(--bg);
   box-shadow:0 18px 40px -22px var(--shadow);
@@ -471,8 +472,12 @@ p{text-wrap:pretty}
             </div>
           </div>
 
-          <img class="screenshot screenshot--hero" src="assets/macos-dashboard.png" width="1908" height="1440" loading="eager" decoding="async"
+          <picture>
+             <source type="image/avif" srcset="assets/macos-dashboard.avif">
+             <source type="image/webp" srcset="assets/macos-dashboard.webp">
+             <img class="screenshot screenshot--hero" src="assets/macos-dashboard.png" width="1908" height="1440" loading="eager" decoding="async"
                  alt="Sentry's dashboard window: CPU, memory and GPU sparklines above a combined 24-hour chart, with battery health, cycle count and energy use below.">
+           </picture>
         </div>
       </div>
       <p class="caption">live simulation · menu bar and dropdown update in real time</p>
@@ -534,8 +539,12 @@ p{text-wrap:pretty}
   <section class="section" style="padding-top:72px" data-reveal>
     <div style="border:1px solid var(--line); background:var(--panel); padding:18px">
       <div class="split-shot">
-        <img class="screenshot" src="assets/macos-menubar.png" width="800" height="662" loading="lazy" decoding="async"
+        <picture>
+             <source type="image/avif" srcset="assets/macos-menubar.avif">
+             <source type="image/webp" srcset="assets/macos-menubar.webp">
+             <img class="screenshot" src="assets/macos-menubar.png" width="800" height="662" loading="lazy" decoding="async"
              alt="Sentry's menu bar dropdown: the headline reads Everything looks normal, above CPU, memory and battery meters and a Keep Awake toggle.">
+           </picture>
         <div>
           <h3 class="h3">One glance, then one click</h3>
           <p style="margin:0; font-size:14px; line-height:1.75; color:var(--body)">The dropdown answers the question in a sentence and shows the modules you enabled. The Dashboard window behind it holds the charts, the battery history and the energy report.</p>
@@ -688,22 +697,34 @@ p{text-wrap:pretty}
     <p class="lede" style="max-width:60ch; margin-top:-4px">None of the three is released yet. All of them are built and working against each other; the iPhone and Watch apps have no App Store or TestFlight build at all, only source you can compile.</p>
     <div class="cards-3">
       <div class="card">
-        <img class="screenshot" src="assets/ios-dashboard.png" width="1005" height="2185" loading="lazy" decoding="async"
+        <picture>
+             <source type="image/avif" srcset="assets/ios-dashboard.avif">
+             <source type="image/webp" srcset="assets/ios-dashboard.webp">
+             <img class="screenshot" src="assets/ios-dashboard.png" width="1005" height="2185" loading="lazy" decoding="async"
              alt="The Sentry iPhone app showing a Mac's battery at 76 percent charging, a 60-second CPU and memory chart, and a vitals list.">
+           </picture>
         <span class="status">iPhone · coming soon</span>
         <h3>Your Mac, from your pocket</h3>
         <p>A full iPhone app — dashboard, history, alerts, settings — found over Bonjour and read straight off your Mac, in the clear, on your own network. Reaching it from outside that network is Pro, and that path is TLS-PSK encrypted from a pairing code. Start a keep-awake hold from the phone and it becomes a Live Activity with an End button in the Dynamic Island — drawn by the system from its deadline, so a timed hold stays right for hours with the app never running.</p>
       </div>
       <div class="card">
-        <img class="screenshot" src="assets/ios-alerts.png" width="1005" height="2185" loading="lazy" decoding="async"
+        <picture>
+             <source type="image/avif" srcset="assets/ios-alerts.avif">
+             <source type="image/webp" srcset="assets/ios-alerts.webp">
+             <img class="screenshot" src="assets/ios-alerts.png" width="1005" height="2185" loading="lazy" decoding="async"
              alt="The alerts tab of the Sentry iPhone app, listing the fourteen alert rules and their thresholds.">
+           </picture>
         <span class="status">iPhone · coming soon</span>
         <h3>See what&rsquo;s armed</h3>
         <p>The iPhone lists the same fourteen rules and their thresholds, so you can check what's watching. Evaluation and notification stay on the Mac.</p>
       </div>
       <div class="card">
-        <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
+        <picture>
+             <source type="image/avif" srcset="assets/watch-overview.avif">
+             <source type="image/webp" srcset="assets/watch-overview.webp">
+             <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
              alt="The Sentry Apple Watch app showing a 76 percent battery ring, 46 minutes to full, and CPU, memory and disk dials.">
+           </picture>
         <span class="status">Apple Watch · coming soon</span>
         <h3>And your wrist</h3>
         <p>A three-page watchOS app — overview, keep-awake, agent activity — themed from the Mac’s own palette, plus a complication in four families.</p>
