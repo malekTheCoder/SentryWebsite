@@ -339,7 +339,7 @@ p{text-wrap:pretty}
 
 /* pricing */
 .plan__price{font-family:var(--serif); font-size:38px; line-height:1; margin:0 0 14px !important; color:var(--fg)}
-.plan__was{font-size:20px; color:var(--dim); text-decoration:line-through; margin-left:8px}
+.plan__soon{font-size:14px; color:var(--dim); margin-left:10px; letter-spacing:0.06em; text-transform:uppercase}
 .plan__note{margin-top:14px !important; font-size:12px !important; color:var(--dim) !important; letter-spacing:0.03em}
 
 /* reveal */
@@ -516,7 +516,7 @@ p{text-wrap:pretty}
       </div>
       <div>
         <h3 class="h3">History that keeps</h3>
-        <p>Per-metric charts from the last 24 hours out to six months, backed by a local SQLite time-series store with automatic rollups.</p>
+        <p>Per-metric charts from the last 24 hours out to six months, backed by a local SQLite time-series store with automatic rollups. Free keeps 48 hours of raw samples and 90 days of hourly ones; daily rollups are kept for good. Longer retention and file export are Pro.</p>
       </div>
     </div>
   </section>
@@ -566,7 +566,7 @@ p{text-wrap:pretty}
           <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
           <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations and Indefinitely are free; the conditional modes are Pro. Amphetamine, evolved for long-running agent work.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro. Amphetamine, evolved for long-running agent work.</p>
       </div>
     </div>
   </section>
@@ -640,7 +640,7 @@ p{text-wrap:pretty}
       <div>
         <p class="eyebrow">[05] alerts</p>
         <h2 class="h2 h2--sm">Fourteen rules you can tune.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own, on any metric; rules that match a named process are Pro. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
       </div>
       <div class="tags" id="sim-alerts"></div>
     </div>
@@ -680,7 +680,7 @@ p{text-wrap:pretty}
         <img class="screenshot" src="assets/ios-dashboard.png" width="1206" height="2622" loading="lazy" decoding="async"
              alt="The Sentry iPhone app showing a Mac's battery at 76 percent charging, a 60-second CPU and memory chart, and a vitals list.">
         <h3>Your Mac, from your pocket</h3>
-        <p>A full iPhone app — dashboard, history, alerts, settings — fed over Bonjour on your own network, or paired remotely with TLS.</p>
+        <p>A full iPhone app — dashboard, history, alerts, settings — fed over Bonjour on your own network, encrypted with TLS. Reaching your Mac from outside that network is Pro.</p>
       </div>
       <div class="card">
         <img class="screenshot" src="assets/ios-alerts.png" width="1206" height="2622" loading="lazy" decoding="async"
@@ -704,17 +704,18 @@ p{text-wrap:pretty}
         <p class="eyebrow">free</p>
         <h3>The whole monitor</h3>
         <p class="plan__price">$0</p>
-        <p>Menu bar composer, verdict dropdown, dashboard, history, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps — and the full twenty-tool MCP server.</p>
+        <p>Menu bar composer, verdict dropdown, dashboard, history charts, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, the iPhone and Apple Watch apps on your own network — and the full twenty-tool MCP server, every tool, every guardrail.</p>
         <p class="plan__note">Not a trial. No time limit, no nagging.</p>
       </div>
       <div class="plan plan--pro">
         <p class="eyebrow eyebrow--accent">pro</p>
         <h3>Sentry Pro</h3>
-        <p class="plan__price">$14.99 <span class="plan__was">$19.99</span></p>
+        <p class="plan__price">$14.99 <span class="plan__soon">planned</span></p>
         <p>Protection Insights · Conditional Keep-Awake · Process-Match Alerts · Custom Themes · Remote Access · History Export &amp; Retention.</p>
-        <p class="plan__note">One purchase, yours forever. 3 Macs · no subscription.</p>
+        <p class="plan__note">Checkout has not opened, so Pro cannot be bought yet and these six stay locked for everyone. A one-time purchase when it does — no subscription.</p>
       </div>
     </div>
+    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:72ch">Sentry is MIT-licensed and the entire app is public, the paid features and the code that gates them included. You can read exactly how the gate works, and the licence lets you build a copy without it. It is there to keep honest users honest, not to stop anyone.</p>
   </section>
 
   <section class="section section--tight" data-reveal>
