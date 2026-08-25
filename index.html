@@ -315,6 +315,10 @@ p{text-wrap:pretty}
 .waitlist p{margin:14px 0 0; font-size:15px; line-height:1.75; color:var(--body); max-width:44ch}
 .signup{display:flex; flex-direction:column; gap:12px}
 .signup__field{display:flex; border:1px solid var(--line-2); background:var(--ink)}
+/* .signup input clears the default outline below; that rule has the same
+   specificity as the global input:focus-visible and comes after it, so the
+   ring has to be restored explicitly or the field focuses invisibly. */
+.signup input:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
 .signup input{
   flex:1; min-width:0; background:transparent; border:none; outline:none; color:var(--fg);
   font-family:var(--mono); font-size:14px; padding:15px 16px;
