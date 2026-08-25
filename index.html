@@ -215,6 +215,7 @@ p{text-wrap:pretty}
 .cells{display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
 .cells--2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .cells--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cells--4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .cell{background:var(--panel); padding:18px}
 .cell--module{display:flex; flex-direction:column; gap:5px; min-height:112px; transition:background .25s}
 .cell--module:hover{background:var(--panel-2)}
@@ -369,7 +370,7 @@ p{text-wrap:pretty}
   .hero__grid{grid-template-columns:1fr; gap:28px; align-items:start}
   .hero__cta{align-items:stretch}
   .btn-solid{text-align:center}
-  .cells--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cells--3,.cells--4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cards-3{grid-template-columns:1fr}
   .split-shot{grid-template-columns:1fr}
   .screenshot--hero{min-height:240px}
@@ -380,7 +381,7 @@ p{text-wrap:pretty}
   .site-footer{gap:12px}
 }
 @media (max-width:560px){
-  .cells--2,.cells--3{grid-template-columns:1fr}
+  .cells--2,.cells--3,.cells--4{grid-template-columns:1fr}
   .themes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .plan{padding:22px}
   .hero h1{margin-top:18px}
@@ -716,13 +717,15 @@ p{text-wrap:pretty}
   </section>
 
   <section class="section section--tight" data-reveal>
-    <div class="cells cells--3">
+    <div class="cells cells--4">
       <div class="cell"><div class="cell__key">Language</div><div class="cell__spec">Swift + SwiftUI + AppKit</div></div>
       <div class="cell"><div class="cell__key">Architecture</div><div class="cell__spec">Universal · macOS 14+, no Electron</div></div>
       <div class="cell"><div class="cell__key">Storage</div><div class="cell__spec">Local GRDB / SQLite</div></div>
       <div class="cell"><div class="cell__key">Network</div><div class="cell__spec">No accounts, no telemetry</div></div>
       <div class="cell"><div class="cell__key">Also ships</div><div class="cell__spec">sentryctl CLI · SentryMCP stdio binary</div></div>
       <div class="cell"><div class="cell__key">Accessibility</div><div class="cell__spec">Extensive VoiceOver labelling</div></div>
+      <div class="cell"><div class="cell__key">Source</div><div class="cell__spec"><a href="https://github.com/malekTheCoder/Sentry" rel="noopener">MIT licensed on GitHub</a></div></div>
+      <div class="cell"><div class="cell__key">Built by</div><div class="cell__spec">Malek Swilam &amp; Aniketh Bandlamudi</div></div>
     </div>
   </section>
 
@@ -745,14 +748,14 @@ p{text-wrap:pretty}
 </main>
 
 <footer class="site-footer">
-  <span>SENTRY · a native macOS system monitor</span>
+  <span>SENTRY · built by <a href="https://github.com/malekTheCoder" rel="noopener">Malek Swilam</a> &amp; <a href="https://github.com/malekTheCoder/Sentry/graphs/contributors" rel="noopener">Aniketh Bandlamudi</a></span>
   <nav aria-label="Footer">
     <a href="#monitoring">monitoring</a>
     <a href="#agents">agents</a>
     <a href="#battery">battery</a>
-    <a href="#waitlist">waitlist</a>
+    <a href="https://github.com/malekTheCoder/Sentry" rel="noopener">source</a>
   </nav>
-  <span>© 2026 · everything runs locally</span>
+  <span>© 2026 · MIT licensed · everything runs locally</span>
 </footer>
 
 <script>
