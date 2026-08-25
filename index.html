@@ -46,6 +46,7 @@
   --fg:#E6EAED; --fg-2:#C7CDD2; --body:#9AA2A8; --dim:#8A939B; --dim-2:#7C848A;
   --accent:oklch(0.80 0.15 70); --bad:oklch(0.64 0.19 27); --nominal:#8A9299;
   --grid:#12161A; --hatch:#151A1E; --bar:#2E363C; --rule-1:#39424A; --rule-2:#4A555D;
+  --edge:#5A6670;
   --header-bg:rgba(11,13,15,0.82); --shadow:rgba(0,0,0,0.9);
   --serif:Newsreader,Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --pad:32px; --max:1300px;
@@ -57,6 +58,7 @@
   --fg:#12110F; --fg-2:#3A3833; --body:#55514A; --dim:#6B6862; --dim-2:#6B6862;
   --accent:oklch(0.52 0.17 45); --bad:oklch(0.56 0.17 30); --nominal:#8A867E;
   --grid:#F0ECE3; --hatch:#E7E3DB; --bar:#C9C4BA; --rule-1:#C9C4BA; --rule-2:#8A867E;
+  --edge:#8A867E;
   --header-bg:rgba(250,248,244,0.86); --shadow:rgba(18,17,15,0.28);
 }
 @media (prefers-color-scheme:light){
@@ -67,6 +69,7 @@
     --fg:#12110F; --fg-2:#3A3833; --body:#55514A; --dim:#6B6862; --dim-2:#6B6862;
     --accent:oklch(0.52 0.17 45); --bad:oklch(0.56 0.17 30); --nominal:#8A867E;
     --grid:#F0ECE3; --hatch:#E7E3DB; --bar:#C9C4BA; --rule-1:#C9C4BA; --rule-2:#8A867E;
+    --edge:#8A867E;
     --header-bg:rgba(250,248,244,0.86); --shadow:rgba(18,17,15,0.28);
   }
 }
@@ -116,7 +119,7 @@ p{text-wrap:pretty}
 .site-nav{display:flex; align-items:center; gap:24px; font-size:12px; letter-spacing:0.04em}
 .theme-btn{
   font-family:var(--mono); font-size:11px; letter-spacing:0.08em; padding:7px 11px;
-  background:transparent; color:var(--dim); border:1px solid var(--line-2);
+  background:transparent; color:var(--dim); border:1px solid var(--edge);
   cursor:pointer; transition:color .2s,border-color .2s; white-space:nowrap;
 }
 .theme-btn:hover{color:var(--accent); border-color:var(--accent)}
@@ -174,18 +177,6 @@ p{text-wrap:pretty}
 .awake__opts{display:flex; gap:5px; flex-wrap:wrap}
 .chip{padding:3px 8px; border:1px solid var(--line-2); color:var(--body)}
 .chip--on{border-color:var(--accent); background:var(--accent); color:var(--bg)}
-.shot{
-  border:1px solid var(--line); background-color:var(--bg);
-  background-image:repeating-linear-gradient(135deg,var(--hatch) 0 1px,transparent 1px 9px);
-  display:flex; align-items:center; justify-content:center; padding:24px;
-}
-.shot--hero{min-height:420px}
-.shot--wide{min-height:340px}
-.shot--card{min-height:250px}
-.shot__label{
-  font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--dim);
-  background:var(--bg); padding:8px 14px; border:1px solid var(--line); text-align:center;
-}
 .caption{font-size:10.5px; color:var(--dim); letter-spacing:0.06em; margin-top:10px; text-align:center}
 
 /* marquee */
@@ -239,12 +230,9 @@ p{text-wrap:pretty}
 
 /* terminal blocks */
 .term{border:1px solid var(--line); background:var(--ink); padding:18px 20px; font-size:12.5px; line-height:1.9; overflow-x:auto}
-.term--roomy{font-size:13px; line-height:1.95}
 .term__label{color:var(--dim); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:10px}
 .term__in{color:var(--fg-2)}
 .term__out{color:var(--accent)}
-.term__muted{color:var(--dim-2)}
-.term__prompt{color:var(--accent)}
 
 /* history chart */
 .chart{margin-top:18px; border:1px solid var(--line); background:var(--bg); padding:16px 18px 14px}
@@ -252,7 +240,7 @@ p{text-wrap:pretty}
 .chart__title{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
 .chart__label{font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--dim)}
 .chart__caption{font-size:10.5px; color:var(--dim)}
-.ranges{display:flex; border:1px solid var(--line); font-size:11px; flex-wrap:wrap}
+.ranges{display:flex; border:1px solid var(--edge); font-size:11px; flex-wrap:wrap}
 .ranges button{
   border:none; border-right:1px solid var(--line); cursor:pointer; padding:5px 11px;
   font-family:var(--mono); font-size:11px; background:transparent; color:var(--body);
@@ -345,7 +333,7 @@ p{text-wrap:pretty}
 picture{display:contents}
 source{display:none}
 .screenshot{
-  display:block; width:100%; border:1px solid var(--line-2); background:var(--bg);
+  display:block; width:100%; border:1px solid var(--edge); background:var(--bg);
   box-shadow:0 18px 40px -22px var(--shadow);
 }
 .screenshot--hero{height:100%; min-height:420px; object-fit:cover; object-position:top left}
@@ -432,6 +420,8 @@ source{display:none}
   [data-reveal]{opacity:1; transform:none}
 }
 </style>
+
+<noscript><style>[data-reveal]{opacity:1; transform:none}</style></noscript>
 </head>
 <body>
 
@@ -1113,7 +1103,10 @@ source{display:none}
     emailInput.disabled = true;
     btn.disabled = true;
     btn.textContent = "opening soon";
-    btn.style.opacity = "0.55";
+    // A blanket opacity dropped the label to 3.4:1. An explicit disabled
+    // palette reads as unavailable and still clears AA in both themes.
+    btn.style.background = "var(--line-2)";
+    btn.style.color = "var(--fg-2)";
     btn.style.cursor = "not-allowed";
     note.textContent = "release notes aren't open yet — watch the repo on GitHub in the meantime.";
     form.addEventListener("submit", function (e) { e.preventDefault(); });
@@ -1147,9 +1140,17 @@ source{display:none}
   renderHistory();
   reveal();
 
-  if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(tick, 1100);
+  // Read live, not once: the CSS block responds to a mid-session change on
+  // its own, and the simulation has to as well or it keeps animating.
+  var motionQuery = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  var timer = null;
+  function syncMotion() {
+    var reduce = motionQuery && motionQuery.matches;
+    if (reduce && timer) { clearInterval(timer); timer = null; }
+    else if (!reduce && !timer) { timer = setInterval(tick, 1100); }
   }
+  if (motionQuery && motionQuery.addEventListener) motionQuery.addEventListener("change", syncMotion);
+  syncMotion();
 })();
 </script>
 </body>
