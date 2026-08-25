@@ -297,6 +297,13 @@ p{text-wrap:pretty}
 .plan p{margin:0; font-size:14px; line-height:1.75; color:var(--body)}
 .card{border:1px solid var(--line); background:var(--panel); padding:18px}
 .card h3{font-size:24px; margin:16px 0 6px}
+.status{
+  display:inline-block; margin-top:16px; padding:3px 9px; font-size:10.5px;
+  letter-spacing:0.14em; text-transform:uppercase; border:1px solid var(--line-2); color:var(--dim);
+}
+.status--out{border-color:var(--accent); color:var(--accent)}
+.card h3 + p{margin-top:0}
+.card .status + h3{margin-top:8px}
 .card p{margin:0; font-size:14px; color:var(--body)}
 
 /* waitlist */
@@ -677,27 +684,31 @@ p{text-wrap:pretty}
   <section class="section section--tight">
     <p class="eyebrow"><span aria-hidden="true">[08]</span> companions</p>
     <h2 class="h2" style="max-width:20ch">It follows you off the desk.</h2>
+    <p class="lede" style="max-width:60ch; margin-top:-4px">The Mac app is out. The iPhone and Apple Watch apps are built and working against it, but neither is released yet &mdash; there is no App Store or TestFlight build, only source you can compile.</p>
     <div class="cards-3">
       <div class="card">
         <img class="screenshot" src="assets/ios-dashboard.png" width="1206" height="2622" loading="lazy" decoding="async"
              alt="The Sentry iPhone app showing a Mac's battery at 76 percent charging, a 60-second CPU and memory chart, and a vitals list.">
+        <span class="status">iPhone · coming soon</span>
         <h3>Your Mac, from your pocket</h3>
         <p>A full iPhone app — dashboard, history, alerts, settings — found over Bonjour and read straight off your Mac, in the clear, on your own network. Reaching it from outside that network is Pro, and that path is TLS-PSK encrypted from a pairing code. Start a keep-awake hold from the phone and it becomes a Live Activity with an End button in the Dynamic Island — drawn by the system from its deadline, so a timed hold stays right for hours with the app never running.</p>
       </div>
       <div class="card">
         <img class="screenshot" src="assets/ios-alerts.png" width="1206" height="2622" loading="lazy" decoding="async"
              alt="The alerts tab of the Sentry iPhone app, listing the fourteen alert rules and their thresholds.">
+        <span class="status">iPhone · coming soon</span>
         <h3>See what&rsquo;s armed</h3>
         <p>The iPhone lists the same fourteen rules and their thresholds, so you can check what's watching. Evaluation and notification stay on the Mac.</p>
       </div>
       <div class="card">
         <img class="screenshot screenshot--watch" src="assets/watch-overview.png" width="416" height="496" loading="lazy" decoding="async"
              alt="The Sentry Apple Watch app showing a 76 percent battery ring, 46 minutes to full, and CPU, memory and disk dials.">
+        <span class="status">Apple Watch · coming soon</span>
         <h3>And your wrist</h3>
         <p>A three-page watchOS app — overview, keep-awake, agent activity — themed from the Mac’s own palette, plus a complication in four families.</p>
       </div>
     </div>
-    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:70ch"><span class="hi">The iPhone and Watch apps are not released yet.</span> They are in the repository and build from source; there is no App Store or TestFlight build to install today. The Mac app is the one you can download. Desktop widgets too, in three sizes, fed live by the app. On iPhone there is a Control Centre keep-awake control as well, and the iPhone widgets show live readings whenever the phone can reach your Mac — demo data otherwise, labelled as demo.</p>
+    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:70ch">Desktop widgets too, in three sizes, fed live by the app. On iPhone there is a Control Centre keep-awake control as well, and the iPhone widgets show live readings whenever the phone can reach your Mac — demo data otherwise, labelled as demo.</p>
   </section>
 
   <section class="section section--tight">
@@ -738,8 +749,8 @@ p{text-wrap:pretty}
   <section class="section section--loose" id="waitlist" data-reveal>
     <div class="waitlist">
       <div>
-        <h2>Told when it changes.</h2>
-        <p>v1.0 is out. Sign up and you get an email when a release lands — nothing else, and one click to leave.</p>
+        <h2>Told when it ships.</h2>
+        <p>There is no list to join yet. When there is, it gets one email per release and nothing else. Until then the repo is the honest place to watch — every release lands there first.</p>
       </div>
       <form class="signup" id="signup" method="post" target="_blank" rel="noopener" novalidate>
         <div class="signup__field">
