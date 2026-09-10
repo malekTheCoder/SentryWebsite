@@ -541,7 +541,7 @@ source{display:none}
     <div class="trio">
       <div>
         <h3 class="h3">Verdict first</h3>
-        <p>One sentence, then a vitals table with per-module meters that stay grey until something needs you, and expandable rows. The dropdown never scrolls.</p>
+        <p>One sentence, then a vitals table with per-module meters that stay grey until something needs you, and expandable rows. The dropdown sizes itself to its rows and only scrolls once you have expanded more of them than the screen can hold.</p>
       </div>
       <div>
         <h3 class="h3">Three bands</h3>
@@ -603,7 +603,7 @@ source{display:none}
           <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
           <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span> and can take it over. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span>, and when its guardrails say the Mac should be allowed to sleep, it can end that one too. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro.</p>
       </div>
     </div>
   </section>
@@ -692,7 +692,7 @@ source{display:none}
       </div>
       <div>
         <p class="lede" style="max-width:56ch; margin-bottom:14px">It reads them and never writes them. Setting fan speeds means shipping a helper that runs as root and writes to the SMC; a monitor has no business holding that, so Sentry doesn&rsquo;t. No part of Sentry runs as root, and nothing it installs does either &mdash; the one background component it can add, the command-line bridge, is a login item that runs as you, only if you turn it on.</p>
-        <p style="margin:0 0 14px; font-size:13px; color:var(--dim-2); line-height:1.7">Sentry is not sandboxed, because thermal and power sensors cannot be read from inside the sandbox; it is signed with a Developer ID and notarised instead. The only permission prompt it raises on its own is Local Network, so your iPhone and Watch can find your Mac. Older builds could install a root fan helper &mdash; this one unregisters it on launch, and macOS may ask you to authorise that removal once.</p>
+        <p style="margin:0 0 14px; font-size:13px; color:var(--dim-2); line-height:1.7">Sentry is not sandboxed, because thermal and power sensors cannot be read from inside the sandbox; it is signed with a Developer ID and notarised instead. The permission prompts it raises on its own are Local Network, so your iPhone and Watch can find your Mac, and Notifications, the first time an alert has something to tell you. Older builds could install a root fan helper &mdash; this one unregisters it on launch, and macOS may ask you to authorise that removal once.</p>
         <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">Fan and sensor readout needs Apple Silicon. On an Intel Mac the same build runs natively and reports CPU, memory, disk, thermal pressure and throttle state, but not per-block power or a temperature in degrees. Throttle state and thermal pressure come straight from the system on both, not inferred.</p>
       </div>
     </div>
@@ -703,7 +703,7 @@ source{display:none}
       <div>
         <p class="eyebrow"><span aria-hidden="true">[07]</span> design</p>
         <h2 class="h2 h2--sm">Three themes, switchable from the dropdown.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the menu bar, dropdown and dashboard, and relayed to the Apple Watch. System uses real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Applied across the dropdown and dashboard and relayed to the Apple Watch; the menu bar takes only the theme’s font and stays monochrome. System uses real behind-window blur. Every one ships a light and a dark pair. Monospaced digits everywhere, so numbers never jitter.</p>
       </div>
       <div class="themes" id="sim-themes"></div>
     </div>
