@@ -278,11 +278,7 @@ p{text-wrap:pretty}
 .theme__swatch i{width:12px; height:24px; display:block}
 .theme__name{font-size:12px; color:var(--fg-2)}
 
-/* pricing / cards */
-.plan{background:var(--panel); padding:30px}
-.plan--pro{background:var(--panel-2); border-left:1px solid var(--accent)}
-.plan h3{font-size:32px; margin:8px 0 12px}
-.plan p{margin:0; font-size:14px; line-height:1.75; color:var(--body)}
+/* cards */
 .card{border:1px solid var(--line); background:var(--panel); padding:18px}
 .card h3{font-size:24px; margin:16px 0 6px}
 .status{
@@ -343,10 +339,6 @@ source{display:none}
 .card .screenshot{height:320px; object-fit:cover; object-position:top center}
 .card .screenshot--watch{object-fit:contain; padding:28px; background:var(--panel-2)}
 
-/* pricing */
-.plan__price{font-family:var(--serif); font-size:38px; line-height:1; margin:0 0 14px !important; color:var(--fg)}
-.plan__note{margin-top:14px !important; font-size:12px !important; color:var(--dim) !important; letter-spacing:0.03em}
-
 /* reveal */
 [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 [data-reveal].is-in{opacity:1; transform:none}
@@ -399,7 +391,6 @@ source{display:none}
 @media (max-width:560px){
   .cells--2,.cells--3,.cells--4{grid-template-columns:1fr}
   .themes{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .plan{padding:22px}
   .hero h1{margin-top:18px}
   .agent-row{grid-template-columns:minmax(0,1fr) 54px 62px; gap:8px; font-size:11px}
   .site-footer{flex-direction:column; align-items:flex-start}
@@ -549,7 +540,7 @@ source{display:none}
       </div>
       <div>
         <h3 class="h3">History that keeps</h3>
-        <p>Per-metric charts from the last 24 hours out to six months, backed by a local SQLite time-series store with automatic rollups. Free keeps 48 hours of raw samples and 90 days of hourly ones; daily rollups are kept for good. Longer retention and file export are Pro.</p>
+        <p>Per-metric charts from the last 24 hours out to six months, backed by a local SQLite time-series store with automatic rollups. It keeps 48 hours of raw samples and 90 days of hourly ones by default; daily rollups are kept for good. Both windows are yours to set, and any chart&rsquo;s history exports to CSV or JSON.</p>
       </div>
     </div>
   </section>
@@ -603,7 +594,7 @@ source{display:none}
           <span class="tag">While CPU is busy</span><span class="tag">While a process runs</span>
           <span class="tag">While a download is active</span><span class="tag">On a schedule</span>
         </div>
-        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span>, and when its guardrails say the Mac should be allowed to sleep, it can end that one too. Fixed durations, Indefinitely and Until a time are free; the five conditional release rules are Pro.</p>
+        <p style="margin:0; font-size:13px; color:var(--dim-2); line-height:1.7">The process field is prefilled with <span class="hi">claude</span>, so the menu reads “While claude runs”. Point it at codex, xcodebuild or node instead. Sentry also spots Claude Code’s own <span class="hi">caffeinate</span>, and when its guardrails say the Mac should be allowed to sleep, it can end that one too.</p>
       </div>
     </div>
   </section>
@@ -677,7 +668,7 @@ source{display:none}
       <div>
         <p class="eyebrow"><span aria-hidden="true">[05]</span> alerts</p>
         <h2 class="h2 h2--sm">Fourteen rules you can tune.</h2>
-        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own, on any metric; rules that match a named process are Pro. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
+        <p style="font-size:14px; line-height:1.75; color:var(--body); margin:0">Thresholds, sustained-duration conditions, per-rule quiet hours, a 30-minute default cooldown and a six-an-hour global rate cap. Add your own, on any metric, or on a named process. Charging paused and slow charging watch a condition the app defines, so for those two you set when they notify you rather than what they look for. Severity is never carried by colour alone.</p>
       </div>
       <div class="tags" id="sim-alerts"></div>
     </div>
@@ -723,7 +714,7 @@ source{display:none}
            </picture>
         <span class="status">iPhone · coming soon</span>
         <h3>Your Mac, from your pocket</h3>
-        <p>A full iPhone app — dashboard, history, alerts, settings — found over Bonjour and read straight off your Mac, in the clear, on your own network. Reaching it from outside that network is Pro, and that path is TLS-PSK encrypted from a pairing code. Start a keep-awake hold from the phone and it becomes a Live Activity with an End button in the Dynamic Island — drawn by the system from its deadline, so a timed hold stays right for hours with the app never running.</p>
+        <p>A full iPhone app — dashboard, history, alerts, settings — found over Bonjour and read straight off your Mac, in the clear, on your own network. Reaching it from outside that network is TLS-PSK encrypted from a pairing code. Start a keep-awake hold from the phone and it becomes a Live Activity with an End button in the Dynamic Island — drawn by the system from its deadline, so a timed hold stays right for hours with the app never running.</p>
       </div>
       <div class="card">
         <picture>
@@ -753,24 +744,9 @@ source{display:none}
 
   <section class="section section--tight">
     <p class="eyebrow"><span aria-hidden="true">[09]</span> what it costs</p>
-    <h2 class="h2 h2--sm" id="pricing-heading">Free, with six features held back.</h2>
-    <div class="cells cells--2">
-      <div class="plan">
-        <p class="eyebrow">free</p>
-        <h3>The whole monitor</h3>
-        <p class="plan__price">$0</p>
-        <p>Menu bar composer, verdict dropdown, dashboard, history charts, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, and the full twenty-tool MCP server, every tool, every guardrail.</p>
-        <p class="plan__note">Not a trial. No time limit, no nagging.</p>
-      </div>
-      <div class="plan plan--pro">
-        <p class="eyebrow eyebrow--accent">pro</p>
-        <h3>Sentry Pro</h3>
-        <p class="plan__price">Later</p>
-        <p>Protection Insights · Conditional Keep-Awake · Process-Match Alerts · Custom Themes · Remote Access · History Export &amp; Retention.</p>
-        <p class="plan__note">Not on sale, and no price set yet. These six stay locked for everyone until there is one. A single purchase when it happens, not a subscription.</p>
-      </div>
-    </div>
-    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:72ch">Sentry is MIT-licensed and the entire app is public, the paid features and the code that gates them included. You can read exactly how the gate works, and the licence lets you build a copy without it. It is there to keep honest users honest, not to stop anyone.</p>
+    <h2 class="h2 h2--sm">Nothing, and the source is public.</h2>
+    <p class="lede" style="max-width:60ch; margin-top:18px">Every feature on this page is in the one build. Menu bar composer, verdict dropdown, dashboard, history charts, the three themes, desktop widgets, all fourteen alert rules, battery health forecasting, and the full twenty-tool MCP server, every tool and every guardrail. Nothing is held back, and there is no account to make.</p>
+    <p style="margin:22px 0 0; font-size:13px; color:var(--dim-2); line-height:1.7; max-width:72ch">The app is <a href="https://github.com/malekTheCoder/Sentry" rel="noopener">open source on GitHub</a> under the MIT licence &mdash; all of it, not a trimmed copy. Read it, build it yourself, or fork it.</p>
   </section>
 
   <section class="section section--tight" data-reveal>

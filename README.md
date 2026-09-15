@@ -92,25 +92,23 @@ stale — all of them live in `index.html`:
 | 20 MCP tools | `SentryKit/Services/MCPTool.swift` → `MCPToolID` |
 | 30-minute cooldown, 6/hour rate cap | `AppSettings.swift` → `defaultAlertCooldownMinutes`, `AlertEngine` → `rateCapPerHour` |
 | 48h raw / 90d hourly / daily forever | `SentryKit/Persistence/RollupJob.swift` |
-| 13 keep-awake modes, 8 free / 5 Pro | `Sentry/Dropdown/SleepControlCard.swift` → `isConditional` |
-| The six Pro features | `SentryKit/Pro/ProEntitlement.swift` → `ProFeature` |
+| 13 keep-awake modes, 5 of them conditional | `Sentry/Dropdown/SleepControlCard.swift` → `isConditional` |
+| CSV/JSON history export | `SentryKit/Persistence/HistoryExport.swift` |
 | History ranges 24h–6mo | `Sentry/Dashboard/TimeRangePicker.swift` |
 | macOS 14+, universal binary | `project.yml` → `deploymentTarget`; `ARCHS` is unset, so standard |
 | Sensors need Apple Silicon | `SystemMetricsKit/Bridges/` — no `#if arch` anywhere; HID/IOReport are AS-only |
 | Nothing runs as root | no `SMAppService.daemon` register, no `SMJobBless`, no setuid |
 | `sentryctl`, `SentryMCP` | `project.yml` → `EXECUTABLE_NAME` |
-| **Pro cannot be bought** | `SentryKit/Pro/License.swift` → `productionPublicKeyBase64` is `nil` |
 | **iPhone/Watch are not distributed** | `project.yml` — one scheme, and it builds none of them |
 
 Two of these are load-bearing and easy to get wrong:
 
-- **Pro is not purchasable.** No public key is embedded, so every licence
-  blob fails verification, and there is no activation backend. The page says
-  the price is planned and the features are locked. If checkout opens, that
-  copy has to change with it.
+- **There is no paid tier.** Sentry is free and MIT-licensed; the page must
+  never describe a feature as held back, priced, or unlocked by anything. If
+  a gate ever reappears in the app, this page is wrong until it is edited.
 - **The companion apps ship in nothing.** They are real code built by no
-  scheme. The page says so. If they ever get a release channel, the free
-  tier list and the companions section both need revisiting.
+  scheme. The page says so. If they ever get a release channel, the
+  companions section needs revisiting.
 
 If you add a theme or an alert rule, the number on the page is wrong the
 moment you merge. It's a two-word edit; the cost is only in remembering.
